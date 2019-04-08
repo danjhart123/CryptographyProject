@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="myScripts.js"></script> 
+
+    
+<html>
+    <head>
+        <title>Encryption Tools</title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Tools for Encryption </h1>
+        <br>
+        <h3> Caesar Cipher Tools </h3>
+        <br><br>
+        <div id ="userInput">
+            <form name="encryptInput" method="post" action="FirstServlet">
+                Plaintext for Caesar cipher encryption: <br><input type="text" id="plainText"/>
+                <br>
+                Encryption key: <br><input type="text" id="key"/>
+                <input type="button" onclick="setValues()" value="Encrypt"/>
+            </form>   
+            <p id="resultDisplay">Result: </p>
+            <br>
+        </div>
+        
+        <div id ="decryptUserInput">
+            <form name="dencryptInput" method="post" action="FirstServlet">
+                Ciphertext for Caesar cipher decryption: <br><input type="text" id="cipherText"/>
+                <br>
+                Encryption key: <br><input type="text" id="decryptKey"/>
+                <input type="button" onclick="setDecryptValues()" value="Decrypt"/>
+            </form>   
+            <p id="plainTextDisplay">Result: </p>
+            <br>
+        </div>
+
+        <h3> Vigen&egrave;re Cipher Tools </h3>
+        <br><br>
+        <div id ="vCipherUserInput">
+            <form name="vEncryptInput" method="post" action="vCipherServlet">
+                Plaintext for Vigen&egrave;re cipher encryption: <br><input type="text" id="vPlainText"/>
+                <br>
+                Encryption key: <br> <input type="text" id="vKey"/>
+                <input type="button" onclick="setVigenereValues()" value="Encrypt"/>
+            </form>
+            <p id="vResultDisplay">Result: </p>
+            <br>
+        </div>
+        
+        <div id ="vCipherDecryptUserInput">
+            <form name="vDecryptInput" method="post" action="vCipherServlet">
+                CipherText for Vigen&egrave;re cipher decryption: <br><input type="text" id="vCipherText"/>
+                <br>
+                Encryption key: <br> <input type="text" id="vDecryptKey"/>
+                <input type="button" onclick="setVigenereDecryptValues()" value="Decrypt"/>
+            </form>
+            <p id="vPlainTextDisplay">Result: </p>
+            <br>
+        </div>
+
+        <h3>Rail-fence Cipher Tools</h3>
+        <br><br>
+        <div id ="railCipherUserInput">
+            <form name="railEncryptInput" method="post" action="">
+                Plaintext for rail fence cipher encryption: (no spaces)
+                <br> <input type="text" id="railPlainText"/>
+                <br>
+                Number of Rails (Key between 2 & 8): 
+                <br>
+                <input type="text" id="railKey"/>
+                <input type="button" onclick="setRailValue();" value="Encrypt"/>
+            </form>
+            <p id="railResultDisplay">Result: </p>
+            <br>
+        </div>
+        
+        
+        <h3>Columnar Transposition Cipher Tools</h3>
+        <br><br>
+        <div id ="columnarInput">
+            <form name="columnarEncryptInput" method="post" action="">
+                Plaintext for columnar transposition cipher encryption: (no spaces)
+                <br> <input type="text" id="columnarPlainText"/>
+                <br>
+                Number of columns (Key between 2 & 8):  
+                <br>
+                <input type="text" id="columnarKey"/>
+                <input type="button" onclick="setColumnValue();" value="Encrypt"/>
+            </form>
+            <p id="columnarResultDisplay">Result: </p>
+            <br>
+        </div>
+        
+    </body>
+
+    
+</html>

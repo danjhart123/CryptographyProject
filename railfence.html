@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rail-fence Cipher </title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Rail-fence Cipher </h1>
+
+        <p id="railText">
+            The rail-fence cipher (also known as the zig-zag cipher) is a 
+            transposition encryption cipher which means that the ciphertext 
+            contains the same letters that are in the plaintext but the order 
+            of them has been changed. Basically, the letters in the original 
+            string get jumbled up and reordered in a certain way. Like all 
+            encryption ciphers we have seen so far this method needs a key to 
+            encrypt messages. The key in this cipher is an integer value which 
+            determines the number of &quot;rails&quot; to be used in the process.
+            <br><br>
+            Once we have the number of rails, we can perform the encryption. To do this we 
+            take the letters in the plaintext and write them out in a &quot;zig-zag&quot; starting from
+            the top line writing the first letter. Then we take the 2nd character and write 
+            it on the next line down from and to the right of the first character. We carry 
+            on doing this until we are on the line matching the maximum number of rails, once
+            this point has been reached then take the next character and put it on the next 
+            line up from and to the right of the last letter.
+            <br><br>
+            We carry on doing this until we reach the first line again and then repeat the 
+            process going down until we have covered all the letters in the plain text. Once
+            we have the plaintext written out in this &quot;zig-zag&quot; style on the rails we then 
+            write the rails out in numerical order. We look at the first rail and write out 
+            all the letters in that rail, then we look at the next rail and write out the 
+            letters in that rail. Once we have written out all of the rails, we have our ciphertext.
+            <br><br>
+            Let us look at an example, we will encrypt the phrase &quot;hello world&quot; with 3 rails. 
+            <br><br>
+        </p>
+        <div class="img-container">
+            <img src="C:\Users\Daniel\Pictures\Rail-Fence-Cipher-Example.png" alt="Vigenere cipher table">
+        </div>
+        <br><br>
+        <p>
+            As you can see from the image above, we write out each letter onto a rail
+            going diagonally downwards until we reach the maximum rail (3rd rail) 
+            which is the point where we will start to write out the letters going 
+            diagonally upwards until we reach the top rail. We then continue this 
+            process until we run out of letters to write out.
+            <br><br> 
+            So after completing this we have our rails:
+            <br><br> 
+        </p>
+        <p id ="rails">
+            <b>
+                Rail 1 = {h, o, r}
+                <br><br> 
+                Rail 2 = {e, l, o, l}
+                <br><br> 
+                Rail 3 = {l, w, d}
+            </b>
+        </p>
+        <br><br>
+        <p>
+            To finish the encryption, we just need to combine all the rails together
+            into a string. In this case we would do the letters in rail 1 followed 
+            by the letters in rail 2 and finally followed by the letters in rail 3. 
+            This gives us the ciphertext of &quot;Horel ollWd&quot;.
+            <br><br> 
+            To decrypt a message encrypted in this way we need to know how many rails
+            were involved in the encryption. Once we know this, we divide the length
+            of the ciphertext by the number of rails. We can then split the letters 
+            in the ciphertext into groups that match the number of rails. So if we 
+            had 3 rails we would divide the length of the ciphertext by 3 and then 
+            start from the end of the ciphertext and write them out in a reverse &quot;zig-zag&quot;.
+
+
+
+        </p>
+    </body>
+
+
+</html>

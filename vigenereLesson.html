@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="myScripts.js"></script> 
+<html>
+    <head>
+        <title>Columnar Transposition Cipher </title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Vigen&egrave;re Cipher Lesson </h1>
+
+        <div id="vStartMessage">
+            <br><br>
+            <p>Hello and welcome to our lesson for teaching the Vigen&egrave;re cipher.
+                <br><br>
+                During this lesson you will learn about the basics of how to perform
+                encryption and decryption using this cipher by undertaking various
+                tasks set out in this section! 
+                <br><br>
+                If you are ready to undertake this lesson press the start button to begin!
+                <br><br>
+            </p>
+            <input type="button" onclick="vigenereLoadNextSection()" value="Start Lesson!"/>
+        </div>
+
+        <div id="vSectionOne">
+            <p>
+                Now it is time for lesson two on this site which is going to cover
+                the topic of the vigen&egrave;re cipher. We will cover what it is
+                and how it works.
+                <br><br>
+                A vigen&egrave;re cipher is basically a more advanced Caesar cipher
+                because it uses more than one alphabet to swap out the letters,
+                making it a &quot;poly-alphabetic&quot;, substitution cipher. In
+                fact, the vigen&egrave;re cipher actually works in almost the same
+                way as the Caesar cipher.
+                <br><br>
+                So how does it work? Like the Caesar cipher (and all other cryptographic 
+                ciphers) we need a key to allow us to change the values in the 
+                &quot;plaintext&quot;. However, unlike the Caesar cipher, the key
+                for the vigin&egrave;re needs to be a word/phrase, not a numerical
+                value.
+                <br><br>
+                So the Vigen&egrave;re cipher works using a string key and the Vigen&egrave;re
+                table which is pictured below. 
+            </p>
+            <br><br>
+            <div class="img-container">
+                <img src="C:\Users\Daniel\Pictures\vigenere.jpg" alt="Vigenere cipher table">
+            </div>
+            <br><br>
+            <p>   
+                As you can see, the Vigen&egrave;re table is a 2-dimensional table where 
+                the rows and columns are both indexed by letters in the alphabet, 
+                and the contents of the table are 26 different variations of the 
+                English alphabet that has been shifted with the Caesar cipher by
+                various shifting values. This table is used to encrypt a string using a string
+                key word. So, how does it work?
+                <br><br>
+                Say we have a string we want to encrypt (the plaintext) and another 
+                string that we will use to encrypt the plaintext (the encryption key)
+                , we would match up the letters in the plaintext with the letters in
+                the encryption key. Once this is done, we would look at the pairs of
+                letters that have been produced by this step. 
+                <br><br>
+                We then take the letter from the plaintext and select the row with 
+                that letter from the table. Next, we take the corresponding key letter
+                and select the column with that letter from the table. The final step
+                is to swap the letter from the plaintext to the letter at the point 
+                where the row and column meet, we then repeat this process until all
+                of the letters have been substituted. 
+                <br><br>
+                Basically, we replace the letter in the plaintext with the letter
+                in the table that is at the index point [plaintext character, key
+                character].
+                <br><br>
+                To decrypt a phrase that has been encrypted in this way we just 
+                do the reverse. We take the key word and match it up with the 
+                ciphertext that we want to decrypt, and like in the encryption 
+                process, we then replace each letter in the ciphertext with the 
+                letter in the table that is at index point [ciphertext character,
+                key character].
+                <br><br>
+                Let's carry on to the next section to learn some more!
+                <br><br>
+            </p>
+            <input type="button" onclick="vigenereLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="vigenereLoadNextSection()" value="Next"/>
+        </div>
+
+        <div id="vSectionTwo">
+            <p>
+                Let us look at an actual example, we will have a plaintext of 
+                &quot;cryptography web app&quot; and an encryption key of &quot;hello&quot;. In the first 
+                step of this encryption we take the key &quot;hello&quot; and match it up 
+                against the letters in &quot;cryptography web app&quot; as shown below.
+                <br><br>
+                *letter outside bracket = character from plaintext <br>
+                *letter inside bracket = character from key
+            </p> 
+            <br>
+            <p id="vExample">
+                <b>c</b>(h)  <b>r</b>(e)  <b>y</b>(l)  <b>p</b>(l)  <b>t</b>(o)  <b>o</b>(h)
+                <b>g</b>(e)  <b>r</b>(l)  <b>a</b>(l)  <b>p</b>(o)  <b>h</b>(h)  <b>y</b>(e)
+                <b>w</b>(l)  <b>e</b>(l)  <b>b</b>(o)  <b>a</b>(h)  <b>p</b>(e)  <b>p</b>(l) 
+
+
+            </p>
+            <br><br>
+            <p>
+                Once this has been done, we will perform encryption based off the 
+                pairs of letters and the Vigen&egrave;re table. Our first pair in this 
+                encryption will be (c,h) where &quot;c&quot; is the first letter of 
+                the plaintext and &quot;h&quot; is the first letter of the key. 
+                We look at the Vigen&egrave;re table and select the row &quot;c&quot;
+                and the column &quot;h&quot; and find the letter at the point where 
+                these 2 meet (index [c,h]). In this case the new letter is &quot;j&quot;
+                so we would replace the &quot;c&quot; from &quot;cryptography web app&quot;
+                with a &quot;j&quot; so it becomes &quot;jomputer science&quot;. 
+                <br><br>
+                Let us continue the encryption below.
+                <br><br>
+            </p>
+            <p id="vExample">
+                <b>
+                    c = index[c,h] = j
+                    <br><br>
+                    r = index[r,e] = v
+                    <br><br>
+                    y = index[y,l] = j
+                    <br><br>
+                    p = index[p,l] = a
+                    <br><br>
+                    t = index[t,o] = h
+                    <br><br>
+                    o = index[o,h] = v
+                    <br><br>
+                    g = index[g,e] = k
+                    <br><br>
+                    r = index[r,l] = c
+                    <br><br>
+                    a = index[a,l] = l
+                    <br><br>
+                    p = index[p,o] = d
+                    <br><br>
+                    h = index[h,h] = o
+                    <br><br>
+                    y = index[y,e] = c
+                    <br><br>
+                    w = index[w,l] = h
+                    <br><br>
+                    e = index[e,l] = p
+                    <br><br>
+                    b = index[b,o] = p
+                    <br><br>
+                    a = index[a,h] = h
+                    <br><br>
+                    p = index[p,e] = t
+                    <br><br>
+                    p = index[p,l] = a
+                </b>
+            </p>
+            <br><br>
+            <p>
+                After this encryption the word &quot;cryptography web app&quot; becomes the 
+                ciphertext &quot;jvjahvkcldoc hpp hta&quot; which is completely different. This 
+                form of encryption is more secure than the simple Caesar cipher because
+                without the key there is no way of knowing which variations of the 
+                alphabet was used to encrypt the word.
+                <br><br>
+                if you are still unsure how it works then it may be easier to think about
+                it in a simpler way. A simpler way to perform this encryption is to take (the character 
+                value of the character in the key &minus; 1) as the shifting value and 
+                simply shift the character of the plaintext by the shifting value. 
+                This is done using the Caesar cipher. For example, if the key had the
+                letter &quot;a&quot; we would have a shifting value of (1-1) = 0, meaning we 
+                would not change the value. If it was &quot;b&quot; then the shifting value would be
+                (2-1) = 1. We would then apply this to the rest of the alphabet so we 
+                would know the shifting values to be applied in the encryption depending on the key.
+            </p>
+            <input type="button" onclick="vigenereLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="vigenereLoadNextSection()" value="Next"/>
+        </div>
+
+        <div id="vSectionThree">
+            <p>
+                Now it it time to put what you have learn so far to the test by
+                running through your own example!
+                <br><br>
+                Firstly, to perform this type of encryption, we need something to 
+                encrypt. So, your first task is to come up with a phrase/word/sentence
+                you would like to encrypt which will be your &quot;plaintext&quot;.
+                It can be however long you want, the longer the better though!
+                <br><br>
+                So, you have chosen your plaintext? Great! For the next step, we 
+                need a word/phrase to be used as the key, which will be given in
+                the tasks below.
+                <br><br>
+                I am now going to give you various keys that you need to use
+                to encrypt your plaintext. You need to produce the correct
+                &quot;ciphertext&quot; for each of these key variations, which you
+                can check after using the vigen&egrave;re cipher encryption tool at the 
+                bottom of this section.
+                <br><br>
+            </p>
+            <div class="img-container">
+                <img src="C:\Users\Daniel\Pictures\vigenere.jpg" alt="Vigenere cipher table">
+            </div>
+            <br><br>
+            <p>
+                <b>
+                    Task 1: Take your chosen plaintext and a key of &quot;hello&quot; to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 2: Take your chosen plaintext and a key of &quot;world&quot; to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 3: Take your chosen plaintext and a key of &quot;abcd&quot; to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 4: Take your chosen plaintext and a key of &quot;tasks&quot; to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 5: Take your chosen plaintext and a key of &quot;fun&quot; to 
+                    produce the ciphertext.
+                </b>
+                <br><br>
+                Did you check your answers and get them all right? Great job! You
+                can try these tasks multiple times with different plaintext until
+                you really get the hang of it!
+                <br><br>
+                Move on to the next section to test out your decryption skills.
+                <br><br>
+            </p>
+        </p>
+        <input type="button" onclick="vigenereLoadPreviousSection()" value="Previous"/>
+        <input type="button" onclick="vigenereLoadNextSection()" value="Next"/>
+        <br><br>
+    </div>
+
+    <div id ="vigenereLessonTool">
+        <form name="vEncryptInput" method="post" action="vCipherServlet">
+            Plaintext for Vigen&egrave;re cipher encryption: <br><input type="text" id="vPlainText"/>
+            <br>
+            Encryption key: <br> <input type="text" id="vKey"/>
+            <input type="button" onclick="setVigenereValues()" value="Encrypt"/>
+        </form>
+        <p id="vResultDisplay">Result: </p>
+        <br>
+    </div>
+
+    <div id="vSectionFour">
+        <p>
+            So, you think you are capable of communicating securely because
+            you can encrypt a few phrases? But how will you read the messages
+            sent back to you? That is what this section is all about, how to
+            decrypt messages that have been encrypted with the Caesar cipher.
+            <br><br>
+            You have read about how to perform decryption in the earlier
+            sections but now it is time to put your skills to the test!
+            <br><br>
+            You will be given multiple ciphertexts and their corresponding 
+            keys and a copy of the vigen&egrave;re table to help you.
+            It is your job to retrieve the plaintext
+            from these ciphertexts by replacing the ciphertext characters for
+            the correct character in the vigenere table.
+            <br><br>
+        <div class="img-container">
+            <img src="C:\Users\Daniel\Pictures\vigenere.jpg" alt="Vigenere cipher table">
+        </div>
+        <p>
+            <br><br>
+            Use the decryption tool at the bottom of the page to check your
+            answers, but only do it after you have attempted it otherwise 
+            you will not learn how to do it properly!
+            <br><br>
+            <b>
+                Task 1: Decrypt &quot;flr dih muinht koa dyg&quot; with the key 
+                &quot;fun&quot;.
+                <br><br>
+                Task 2: Decrypt &quot;osh lfl czf tprotbn xstg ailnvprr ecvp&quot;
+                with the key &quot;hello&quot;.
+                <br><br>
+                Task 3: Decrypt &quot;vvuh cl ee goen igi&quot; with the key 
+                &quot;computer&quot;.
+                <br><br>
+                Task 4: Decrypt &quot;gpm wzcpd ubic hsj oir bpi ykirg nisr nse 
+                oefmqrq&quot; with the key &quot;science&quot;.
+                <br><br>
+                Task 5: Decrypt &quot;hbxh cov odwtfthh tikv giqjhv yfv&quot; 
+                with the key &quot;abcde&quot;.
+            </b>
+            <br><br>
+            To show how secure this encryption is, try and decrypt the same 
+            phrases with a different key and see how different they are from
+            what they should be!
+            <br><br>
+        </p>
+        <input type="button" onclick="vigenereLoadPreviousSection()" value="Previous"/>
+        <input type="button" onclick="vigenereLoadNextSection()" value="Next"/>
+        <br><br>
+    </div>
+
+    <div id ="vigenereLessonTool2">
+        <form name="vDecryptInput" method="post" action="vCipherServlet">
+            CipherText for Vigen&egrave;re cipher decryption: <br><input type="text" id="vCipherText"/>
+            <br>
+            Encryption key: <br> <input type="text" id="vDecryptKey"/>
+            <input type="button" onclick="setVigenereDecryptValues()" value="Decrypt"/>
+        </form>
+        <p id="vPlainTextDisplay">Result: </p>
+        <br>
+    </div>
+
+    <div id="vSectionFive">
+        <p>
+            Well done! You have completed the lesson for this topic! You can
+            either re-do the lesson if you still do not understand or you 
+            can go back to the index to try out some different topics.
+        </p>
+        <a href="vigenereLesson.html">Re-do Lesson</a> |
+        <a href="lessonIndex.html">Lesson Index</a>
+    </div>
+
+</body>
+
+
+</html>

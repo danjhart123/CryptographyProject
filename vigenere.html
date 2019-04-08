@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vigen&egrave;re Cipher</title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Vigen&egrave;re Cipher </h1>
+
+        <p id="vigenereText">
+
+            The Vigen&egrave;re cipher is another substitution cipher like the Caesar 
+            cipher but this one uses multiple alphabets for encryption, so it is
+            known as poly-alphabetic. This cipher is not just similar to the Caesar
+            cipher in the fact that it substitutes the letters in a word for a 
+            different one, but the Vigen&egrave;re cipher actually works by using 26 
+            different variations of the Caesar cipher.
+            <br><br>
+            Now one of the key differences between the 2 ciphers is that the 
+            Vigen&egrave;re cipher uses a string as a key for encryption whereas the 
+            Caesar cipher uses an integer &quot;shifting&quot; value as a key for encryption.
+            So the Vigen&egrave;re cipher works using a string key and the Vigen&egrave;re
+            table which is pictured below. 
+        </p>
+        <br><br>
+        <div class="img-container">
+            <img src="C:\Users\Daniel\Pictures\vigenere.jpg" alt="Vigenere cipher table">
+        </div>
+        <br><br>
+        <p>   
+            As you can see, the Vigen&egrave;re table is a 2-dimensional table where 
+            the rows and columns are both indexed by letters in the alphabet, 
+            and the contents of the table are 26 different variations of the 
+            Caesar cipher, this table is used to encrypt a string using a string
+            key word. So, how does it work?
+            <br><br>
+            Say we have a string we want to encrypt (the plaintext) and another 
+            string that we will use to encrypt the plaintext (the encryption key)
+            , we would match up the letters in the plaintext with the letters in
+            the encryption key. Once this is done, we would look at the pairs of
+            letters that have been produced by this step. 
+            <br><br>
+            We then take the letter from the plaintext and select the row with 
+            that letter from the table. Next, we take the corresponding key letter
+            and select the column with that letter from the table. The final step
+            is to swap the letter from the plaintext to the letter at the point 
+            where the row and column meet, we then repeat this process until all
+            of the letters have been substituted.
+            <br><br>
+            Let us look at an actual example, we will have a plaintext of 
+            &quot;computer science&quot; and an encryption key of &quot;hello&quot;. In the first 
+            step of this encryption we take the key &quot;hello&quot; and match it up 
+            against the letters in &quot;computer science&quot; as shown below.
+            <br><br>
+            *letter outside bracket = character from plaintext <br>
+            *letter inside bracket = character from key
+        </p> 
+        <br><br>
+        <p id="vExample">
+            <b>c</b>(h)  <b>o</b>(e)  <b>m</b>(l)  <b>p</b>(l)  <b>u</b>(o)  <b>t</b>(h)
+            <b>e</b>(e)  <b>r</b>(l)  <b>s</b>(l)  <b>c</b>(o)  <b>i</b>(h)  <b>e</b>(e)
+            <b>n</b>(l)  <b>c</b>(l)  <b>e</b>(o) 
+
+
+        </p>
+        <br><br>
+        <p>
+            Once this has been done, we will perform encryption based off the 
+            pairs of letters and the Vigen&egrave;re table. Our first pair in this 
+            encryption will be (c,h) where &quot;c&quot; is the first letter of the plaintext
+            and &quot;h&quot; is the first letter of the key. We look at the Vigen&egrave;re table
+            and select the row &quot;c&quot; and the column &quot;h&quot; and find the letter at the
+            point where these 2 meet (index [c,h]). In this case the new letter 
+            is &quot;j&quot; so we would replace the &quot;c&quot; from &quot;computer science&quot; with a &quot;j&quot;
+            so it becomes &quot;jomputer science&quot;. Let us continue the encryption below.
+            <br><br>
+        <p id="vExample">
+            <b>
+            c = index[c,h] = j
+            <br><br>
+            o = index[o,e] = s
+            <br><br>
+            m = index[m,l] = x
+            <br><br>
+            p = index[p,l] = a
+            <br><br>
+            u = index[u,o] = i
+            <br><br>
+            t = index[t,h] = a
+            <br><br>
+            e = index[e,e] = i
+            <br><br>
+            r = index[r,l] = c
+            <br><br>
+            s = index[s,l] = d
+            <br><br>
+            c = index[c,o] = q
+            <br><br>
+            i = index[i,h] = p
+            <br><br>
+            e = index[e,e] = i
+            <br><br>
+            n = index[n,l] = y
+            <br><br>
+            c = index[c,l] = n
+            <br><br>
+            e = index[e,o] = s
+            </b>
+        </p>
+        <br><br>
+        <p>
+        After this encryption the word &quot;computer science&quot; becomes the 
+        ciphertext &quot;jsxaiaic dqpiyns&quot; which is completely different. This 
+        form of encryption is more secure than the simple Caesar cipher because
+        without the key there is no way of knowing which variations of the 
+        alphabet was used to encrypt the word.
+        <br><br>
+        To perform decryption of the message you need to know the key and 
+        know how to use the Vigen&egrave;re table to look up the values. we do the 
+        same matching up process with the ciphertext and the key like we did
+        in the encryption process and then find the plaintext by looking at 
+        the corresponding values at the index point [ciphertext character, key character].
+        <br><br> 
+        A simpler way to perform this encryption is to take (the character 
+        value of the character in the key &minus; 1) as the shifting value and 
+        simply shift the character of the plaintext by the shifting value. 
+        This is done using the Caesar cipher. For example, if the key had the
+        letter &quot;a&quot; we would have a shifting value of (1-1) = 0, meaning we 
+        would not change the value. If it was &quot;b&quot; then the shifting value would be
+        (2-1) = 1. We would then apply this to the rest of the alphabet so we 
+        would know the shifting values to be applied in the encryption depending on the key.
+
+    </p>
+</body>
+
+
+</html>

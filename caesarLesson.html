@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="myScripts.js"></script> 
+<html>
+    <head>
+        <title>Columnar Transposition Cipher </title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Caesar Cipher Lesson </h1>
+
+
+        <div id="cStartMessage">
+            <br><br>
+            <p>Hello and welcome to our lesson for teaching the Vigen&egrave;re cipher.
+                <br><br>
+                During this lesson you will learn about the basics of how to perform
+                encryption and decryption using this cipher by undertaking various
+                tasks set out in this section! 
+                <br><br>
+                If you are ready to undertake this lesson press the start button to begin!
+                <br><br>
+            </p>
+            <input type="button" onclick="caesarLoadNextSection()" value="Start Lesson!"/>
+        </div>
+
+        <div id="cSectionOne">
+            <p>So, you want to learn how to use the Caesar cipher to encrypt
+                and decrypt messages? Well you have come to the right place!
+                <br><br>
+                The Caesar cipher operates using an integer key value which we will 
+                call the &quot;shifting&quot; value. We then use this value to change
+                the character values in the message. We take each letter in the message
+                and find its character value.
+                <br><br>
+                A character value of a letter corresponds to its position in the alphabet.
+                In this lesson we will be working with the English alphabet (a-z). 
+                So the values of our letter would be as followed;
+                <br><br>
+                The letter &quot;a&quot; would have a character value of 1, &quot;b&quot; 
+                would have the value of 2, &quot;c&quot; would have the value of 3 and 
+                so on until we get to &quot;z&quot; which has the value of 26.
+                <br><br>
+                Now, back to our cipher and how we use it to encrypt a message. 
+                So we take the shifting value and add it to
+                the character value of the letter in the message. This process changes
+                the letters character code and therefor changes the letter to that of 
+                the letter with the new character value.
+                <br><br>
+                For example, we have the letter &quot;m&quot;and a shifting value of 4,
+                we take the character value of &quot;m&quot;, which is 13, and add 4 to it.
+                This gives us a value of 17, the 17th letter in the alphabet is &quot;q&quot;, 
+                so in our message we would replace every instance of &quot;m&quot; with
+                &quot;q&quot;.
+                <br><br>
+                We carry out the same process for every letter in the message or 
+                &quot;plaintext&quot;, to encrypt completely and obtain the secret message
+                or &quot;ciphertext&quot; which cannot be interpreted without the key/ shifting value.
+                <br><br>
+                To decrypt the ciphertext we simply take the key and subtract it from
+                every letters character value. So, say we had the letter &quot;o&quot;
+                and a key of 10, we would replace &quot;o&quot; with the letter that is
+                10 places earlier in the alphabet, which is &quot;e&quot;. 
+                <br><br>
+                Again, we carry out the same process for every letter in the ciphertext
+                and will end up with the original message to read!
+                <br><br>
+                But what happens when the process of adding or subtracting the key from
+                the character value gives a result that is out of range? I.e. the value
+                is less than 1 or more than 26? Carry on to the next section to find out!
+            </p>
+            <br><br>
+            <input type="button" onclick="caesarLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="caesarLoadNextSection()" value="Next"/>
+        </div>
+
+        <div id="cSectionTwo">
+            <p>This section brings us to the key concept that allows this form 
+                of encryption to become possible, modular arithmetic.
+                <br><br>
+                Modular arithmetic, also known as clock face arithmetic, is a system
+                of arithmetic where the numbers &quot;wrap around&quot; when it reaches a certain
+                value. Basically, if the number is bigger than a specific max value
+                then we will divide the bigger number by the max value and take the
+                remainder as the new value.
+                <br><br>
+                Let us do an example of how this would work in the case of the Caesar
+                cipher. The maximum value a letter could have in the English alphabet
+                is 26. So, when performing encryption using the Caesar cipher, we 
+                would do the same as before, add the shifting value to the character
+                value, but we add an extra step. After performing this addition we 
+                would then divide the new character value by the maximum value, 26, 
+                and would take the remainder as the new character value.
+                <br><br>
+                So, say we have the letter &quot;x&quot; and a shifting value of 11,
+                the character value of &quot;x&quot; is 24, adding 11 to this would 
+                give us 35, which it too large so it does not correspond to a letter.
+                To get the correct letter we do modular arithmetic. We add the character
+                value and the key together, so 24+11 to give us 35. Next, we take that 
+                value of 34 and divide it by the max value (26). 
+                <br><br>
+                <b>34/26 = 1 with a remainder of 8</b>
+                <br><br>
+                So, we take the remainder value of 8 and this is our new letter, the
+                8th letter of the alphabet, which is &quot;h&quot;. We would carry out this
+                step for any values that go over 26 after the addition of the key takes
+                place.
+                <br><br>
+                Go to the next section to work on some examples to cement your understanding!
+                <br><br>
+            </p>
+            <input type="button" onclick="caesarLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="caesarLoadNextSection()" value="Next"/>
+        </div>
+
+        <div id="cSectionThree">
+            <p>
+                Now it it time to put what you have learn so far to the test by
+                running through your own example!
+                <br><br>
+                Firstly, to perform this type of encryption, we need something to 
+                encrypt. So, your first task is to come up with a phrase/word/sentence
+                you would like to encrypt which will be your &quot;plaintext&quot;.
+                It can be however long you want, the longer the better though!
+                <br><br>
+                So, you have chosen your plaintext? Great! For the next step, we 
+                need a number to use as the shifting value. It can be any number
+                but for this task we will use a number between 0-26.
+                <br><br>
+                I am now going to give you various numbers that you need to use
+                to encrypt your plaintext. You need to produce the correct
+                &quot;ciphertext&quot; for each of these number variations, which you
+                can check after using the Caesar cipher encryption tool at the 
+                bottom of this section.
+                <br><br>
+                <b>
+                    Task 1: Take your chosen plaintext and a shifting value of 5 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 2: Take your chosen plaintext and a shifting value of 8 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 3: Take your chosen plaintext and a shifting value of 11 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 4: Take your chosen plaintext and a shifting value of 18 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 5: Take your chosen plaintext and a shifting value of 23 to 
+                    produce the ciphertext.
+                </b>
+                <br><br>
+                Did you check your answers and get them all right? Great job! You
+                can try these tasks multiple times with different plaintext until
+                you really get the hang of it!
+                <br><br>
+                Move on to the next section to test out your decryption skills.
+                <br><br>
+            </p>
+
+            <input type="button" onclick="caesarLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="caesarLoadNextSection()" value="Next"/>
+            <br><br>
+        </div>
+        <div id ="caesarLessonTool">
+            <form name="encryptInput" method="post" action="FirstServlet">
+                Plaintext for Caesar cipher encryption: <br><input type="text" id="plainText"/>
+                <br>
+                Encryption key: <br><input type="text" id="key"/>
+                <input type="button" onclick="setValues()" value="Encrypt"/>
+            </form>   
+            <p id="resultDisplay">Result: </p>
+            <br>
+        </div>
+
+        <div id="cSectionFour">
+            <p>
+                So, you think you are capable of communicating securely because
+                you can encrypt a few phrases? But how will you read the messages
+                sent back to you? That is what this section is all about, how to
+                decrypt messages that have been encrypted with the Caesar cipher.
+                <br><br>
+                You have read about how to perform decryption in the earlier
+                sections but now it is time to put your skills to the test!
+                <br><br>
+                You will be given multiple ciphertexts and their corresponding 
+                shifting values/keys. It is your job to retrieve the plaintext
+                from these ciphertexts by subtracting the key from each letters
+                character value.
+                <br><br>
+                Use the decryption tool at the bottom of the page to check your
+                answers, but only do it after you have attempted it otherwise 
+                you will not learn how to do it properly!
+                <br><br>
+                <b>
+                    Task 1: Decrypt &quot;panjc bcjac&quot; with the key value of 9.
+                    <br><br>
+                    Task 2: Decrypt &quot;riv pfl yrmzex wle pvk&quot; with the key 
+                    value of 17.
+                    <br><br>
+                    Task 3: Decrypt &quot;oaa hawnjejc ywj xa bqj&quot; with the key
+                    value of 22.
+                    <br><br>
+                    Task 4: Decrypt &quot;dtz fwj fqrtxy knsnxmji&quot; with the key 
+                    value of 5.
+                    <br><br>
+                    Task 5: Decrypt &quot;qcbufohizohwcbg w vcds mci rwr bch qvsqy
+                    hvs obgksfg pstcfs&quot; with the key value of 14.
+                </b>
+                <br><br>
+                To show how secure this encryption is, try and decrypt the same 
+                phrases with a different key and see how different they are from
+                what they should be!
+                <br><br>
+            </p>
+
+            <input type="button" onclick="caesarLoadPreviousSection()" value="Previous"/>
+            <input type="button" onclick="caesarLoadNextSection()" value="Next"/>
+            <br><br>
+        </div>
+
+        <div id ="caesarLessonTool2">
+            <form name="dencryptInput" method="post" action="FirstServlet">
+                Ciphertext for Caesar cipher decryption: <br><input type="text" id="cipherText"/>
+                <br>
+                Encryption key: <br><input type="text" id="decryptKey"/>
+                <input type="button" onclick="setDecryptValues()" value="Decrypt"/>
+            </form>   
+            <p id="plainTextDisplay">Result: </p>
+            <br>
+        </div>
+
+        <div id="cSectionFive">
+            <p>
+                Well done! You have completed the lesson for this topic! You can
+                either re-do the lesson if you still do not understand or you 
+                can go back to the index to try out some different topics.
+            </p>
+            <a href="caesarLesson.html">Re-do Lesson</a> |
+            <a href="lessonIndex.html">Lesson Index</a>
+
+        </div>
+    </body>
+</html>

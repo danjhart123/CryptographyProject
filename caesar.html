@@ -1,0 +1,146 @@
+<script type="text/javascript" src="myScripts.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caesar Cipher </title>
+        <link rel="stylesheet" href ="mystyle.css">
+    </head>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="caesar.html">Caesar Cipher</a>
+            <a href="vigenere.html">Vigen&egrave;re Cipher</a>
+            <a href="railfence.html">Rail-fence Cipher</a>
+            <a href="columnar.html">Columnar Transposition Cipher</a>
+            <a href="lessonIndex.html">Learning</a>
+            <a href="tasks.html">Tasks and Games</a>
+            <a href="encryptionTools.html">Encryption Tools</a>
+            <a href="quiz.php">Quiz</a>
+        </div>
+    </header>
+    <body>
+        <h1> Caesar Cipher </h1>
+
+
+        <p id="caesarText">
+            The Caesar cipher is probably one of the first encryption ciphers 
+            created and is definitely one of the simplest to use. It is a 
+            mono-alphabetic substitution cipher which means that it only uses one alphabet for
+            encryption and just changes the values in the alphabet to new ones. 
+            This is less complicated than the Vigen&egrave;re cipher which 
+            uses multiple alphabets which are based off of the Caesar cipher.
+            <br><br>
+            The Caesar cipher works by taking in a numerical value, usually an 
+            integer, as a shifting value. This shifting value is then used to 
+            change the letter values in the alphabet. Say we take the English 
+            alphabet which has the characters a-z, each letter in that alphabet 
+            has a corresponding numerical value, a has a value of 1, b has a value
+            of 2, all the way to z which has a value of 26. During a Caesar cipher
+            encryption we would take the numerical value of each character in the
+            string that needs to be encrypted and add the shifting value onto the
+            characters value. This will change the letter to another letter in 
+            the alphabet.
+            <br><br>
+            For example, say we have a shifting value of 4, we would go through 
+            each letter in the word and change the character code value by adding
+            4 to it. The letter a would become f (1+4), b would become g (2+4), 
+            c would become g (3+4) and so on. But what happens when the character
+            value added with the shifting value would be bigger than 26? That 
+            brings us to the key concept that allows this form of encryption to 
+            become possible, modular arithmetic.
+            <br><br>
+            Modular arithmetic, also known as clock face arithmetic, is a system
+            of arithmetic where the numbers &quot;wrap around&quot; when it reaches a certain
+            value. Basically, if the number is bigger than a specific max value
+            then we will divide the bigger number by the max value and take the
+            remainder as the new value.
+            <br><br>
+            Let us do an example of how this would work in the case of the Caesar
+            cipher. The maximum value a letter could have in the English alphabet
+            is 26. So, when performing encryption using the Caesar cipher, we 
+            would do the same as before, add the shifting value to the character
+            value, but we add an extra step. After performing this addition we 
+            would then divide the new character value by the maximum value, 26, 
+            and would take the remainder as the new character value.
+            <br><br>
+            Still not sure how this works? Then let us do a real world example. 
+            Say we want to encrypt the word &quot;hello world&quot; using a shifting value
+            of 10. The letter h has a character value of 8, so we would add 10 
+            to this giving us 18 as the new character value, turning the letter 
+            from a &quot;h&quot; to an &quot;r&quot;. We do the same for the rest of the letters. 
+            <br><br>
+        <p id="caesarExample">
+            <b>
+                h = 8 + 10 = 18 = r
+                <br><br>
+                e = 5 + 10 = 15 = o
+                <br><br>
+                l = 12 + 10 = 22 = v
+                <br><br>
+                l = 12 + 10 = 22 = v
+                <br><br>
+                o = 15 + 10 = 25 = y
+                <br><br>
+            </b>
+        </p>
+        <p>
+            Now all these letters were still less than 26 even after they 
+            changed value so we did not have to do the extra step of &quot;modding&quot; 
+            the value. The next part of the letter will show how this works when
+            it is needed.
+            <br><br>
+        </p>
+        <p id="caesarExample">
+            <b>
+                w = 23 + 10 = 33 mod 26 (because 33 is more than 26) = 33/26 = 1 
+                remainder 7 (so new value is 7) = g
+                <br><br>
+                o = 15 + 10 = 25 = y
+                <br><br>
+                r = 18 + 10 = 28 mod 26 = 28/26 = 1 remainder 2 = b
+                <br><br>
+                l = 12 + 10 = 22 = v
+                <br><br>
+                d = 4 + 10 = 14 = n
+                <br><br>
+            </b>
+        </p>
+        <p>
+            So, after encryption, &quot;hello world&quot; turns into &quot;rovvy gybvn&quot;. 
+            As you can see this is very different from the word we started off 
+            with so shows how effective and simple the Caesar cipher is to use to hide the 
+            real content of messages.
+            <br><br> 
+            If you need to decrypt the message sent via Caesar cipher encryption
+            you would need to know the shifting value that was used, which will 
+            be known if you were the intended recipient of the message. To decrypt
+            the real message you just do the opposite of the encryption, you take
+            away the shifting value from the letters character value. 
+            <br><br>
+            If you are still not sure how this works, use the interactive Caesar
+            cipher wheel below to help you out! The Caesar cipher wheel is a tool
+            used to perform Caesar cipher encryption which uses 2 wheels of the 
+            alphabet on top of each other. You would turn the outer wheel however
+            many segments to the right that the shifting value is. This shift of
+            the dial would tell you what each letter in the alphabet would 
+            correspond too given a certain shift value. Hopefully this will help
+            solidify your understanding!
+            <br><br>
+
+
+        </p>
+        <div class="img-container">
+            <img class="top" src="C:\Users\Daniel\Pictures\dial.png" alt="Caesar cipher dial" id="dial">
+            <img class="bottom" src="C:\Users\Daniel\Pictures\caesar_cipher.png" alt="Caesar cipher wheel" id="wheel">
+        </div>
+        <br><br>
+        <div id ="shiftInput">
+            <form>
+                Number of Caesar cipher shift: <input type="text" id="shift"/>
+                <input type="button" onclick="rotate()" value="Rotate"/>
+            </form>
+        </div>
+    </body>
+
+
+</html>
