@@ -16,6 +16,7 @@
             <a href="tasks.html">Tasks and Games</a>
             <a href="encryptionTools.html">Encryption Tools</a>
             <a href="quiz.php">Quiz</a>
+            <a href="leaderboard.php">Leaderboard</a>
         </div>
     </header>
     <body>

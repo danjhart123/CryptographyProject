@@ -1,5 +1,5 @@
 #quizInput, #leaderBoardEntry, #caesarLessonTool, #caesarLessonTool2, 
-#vigenereLessonTool, #vigenereLessonTool2{
+#vigenereLessonTool, #vigenereLessonTool2, #railTool{
     display: none;
 }
 
@@ -34,7 +34,7 @@ p{
 }
 
 #homeWelcomeMessage, #vExample, #rails, #caesarExample, #wholeQuiz, #cStartMessage,
-#vStartMessage, #rStartMessage, #ctStartMessage 
+#vStartMessage, #rStartMessage, #ctStartMessage, #columnarExample 
 {
     text-align: center;
     font-size: 20px;
@@ -54,7 +54,7 @@ p{
 #userInput, #decryptUserInput, #vCipherUserInput, #railCipherUserInput, 
 #vCipherDecryptUserInput, #railCipherUserInput2, #railCipherUserInput3, #railCipherUserInput4,
 #railCipherUserInput5, #shiftInput, #wholeQuiz, #caesarLessonTool, #caesarLessonTool2,
-#columnarInput, #startButton, #vigenereLessonTool, #vigenereLessonTool2{
+#columnarInput, #startButton, #vigenereLessonTool, #vigenereLessonTool2, #railTool{
     position: relative;
     margin: 0 auto; 
     width: 250px;

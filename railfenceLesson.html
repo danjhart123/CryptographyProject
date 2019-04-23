@@ -16,11 +16,12 @@
             <a href="tasks.html">Tasks and Games</a>
             <a href="encryptionTools.html">Encryption Tools</a>
             <a href="quiz.php">Quiz</a>
+            <a href="leaderboard.php">Leaderboard</a>
         </div>
     </header>
     <body>
         <h1> Rail-fence Cipher Lesson </h1>
-        
+
         <div id="rStartMessage">
             <br><br>
             <p>Hello and welcome to our lesson for teaching the Rail-fence cipher.
@@ -34,31 +35,202 @@
             </p>
             <input type="button" onclick="railLoadNextSection()" value="Start Lesson!"/>
         </div>
-        
+
         <div id="rSectionOne">
-            <p>This is a test of the 1st section</p>
+            <p>
+                Let us begin your third lesson on the world of cryptography by
+                learning about the rail-fence cipher, also know as the &quot;zig
+                zag&quot;. This cipher is the first transposition cipher we have 
+                come across so far so maybe we should first cover what a 
+                transposition cipher does.
+                <br><br>
+                In general, we have 2 main type of ciphers, substitution and 
+                transposition. We have already seen substitution ciphers in the 
+                for of the Caesar and vigen&egrave;re cipher. Both of these ciphers
+                replace the letters in a word with completely different letters
+                from a specific alphabet. Transposition ciphers are different due
+                to the fact that they do not replace the letters in a word but 
+                simply re-order the letters in a certain way depending on the 
+                cipher used. Basically a transposition cipher &quot;jumbles&quot;
+                up the order of the letters to create the ciphertext.
+                <br><br>
+                So that is how transposition ciphers work in general, but how 
+                exactly does the rail-fence cipher work? Firstly, as with all
+                ciphers covered so far, we need a key to be able to encrypt a 
+                word in this way. The key for this cipher is a number which 
+                represents the amount of &quot;rails&quot; that will be used in 
+                this encryption.
+                <br><br>
+                The amount of rails is basically how many rows we have to work 
+                with for encryption. To encrypt in this way, we take each letter
+                of the plaintext and write it out diagonally, from left to right,
+                with a letter in each row. We go downwards diagonally until we 
+                reach the bottom rail, then we go up diagonally doing the same
+                until we reach the top, then repeat the process. We carry out this
+                process until we have no more letters left in the word to encrypt.
+                <br><br>
+                Once we have completed this process it is time to create the 
+                ciphertext we require. To do this we simply write out the letters
+                in the first rail, followed by the letters in the second rail, 
+                and then do this for all of the rails until we have written out all of
+                the letters. The new order of the letters is the ciphertext in
+                this cipher.
+                <br><br>
+                To decrypt a message encrypted in this way we need to know how many rails
+                were involved in the encryption. Once we know this, we divide the length
+                of the ciphertext by the number of rails. We can then split the letters 
+                in the ciphertext into groups that match the number of rails. So if we 
+                had 3 rails we would divide the length of the ciphertext by 3 and then 
+                start from the end of the ciphertext and write them out in a 
+                reverse &quot;zig-zag&quot;.
+                <br><br>
+                Move on to the next section to see a worked example.
+            </p>
             <input type="button" onclick="railLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="railLoadNextSection()" value="Next"/>
         </div>
-        
+
         <div id="rSectionTwo">
-            <p>This is a test of the 2nd section</p>
+            <p>
+                In this section we will work through an actual example of the 
+                rail-fence cipher to help cement your understanding of how it works.
+                In this example we will use the plaintext &quot;this is a secret
+                message&quot; and a key of 4 (4 rails will be used). Look at the 
+                image below to visualise the example.
+            </p>
+            <div class="img-container">
+                <img src="C:\Users\Daniel\Pictures\railfenceExample.png" alt="railfence example">
+            </div>
+            <p>
+                As you can see from the above image we take the letters in the 
+                plaintext and write them downwards diagonally from left to right.
+                We do this until we hit the bottom rail and then start writing
+                the letters out upwards diagonally from left to right until we 
+                hit the top rail, where we go downwards again. 
+                <br><br>
+                We carry on doing this until all the letters have been used, at 
+                which point we have our rails that we can use to create our 
+                ciphertext.
+                <br><br>
+                The rails from this example are as followed:
+                <br><br>
+                <b>
+                    Rail 1: {t, a, t, g}
+                    <br><br>
+                    Rail 2: {h, s, s, e, m, a, e}
+                    <br><br>
+                    Rail 3: {i, i, e, r, e, s}
+                    <br><br>
+                    Rail 4: {s, c, s}
+                    
+                </b>
+                <br><br>
+                To create our ciphertext we just write out the letters in each
+                rail in ascending order (1 - 4). Once we do this we get the 
+                ciphertext:
+                <br><br>
+                <b>
+                    tatghssemaeiieresscs
+                </b>
+                <br><br>
+                As you can see, this is a pretty affective way to hide a message
+                as the new message is pretty unreadable. Move on to the next section
+                to undertake some tasks yourself!
+                
+            </p>
             <input type="button" onclick="railLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="railLoadNextSection()" value="Next"/>
         </div>
-        
+
         <div id="rSectionThree">
-            <p>This is a test of the 3rd section</p>
+            <p>
+                In this section we are going to put what you have learnt so far
+                to the test. You will need to perform encryption tasks to help you
+                become more competent with this form of encryption.
+                <br><br>
+                For this section you will need to pick out a word to encrypt 
+                (plaintext), this word can be anything you want but it is best
+                if it a long phrase/sentence. Got your plaintext? Great! Next we
+                need a key (amount of rails) but in this tutorial you will be 
+                given various keys to use for encryption.
+                <br><br>
+                <b>
+                    Task 1: Take your chosen plaintext and a key of 4 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 2: Take your chosen plaintext and a key of 5 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 3: Take your chosen plaintext and a key of 6 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 4: Take your chosen plaintext and a key of 3 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 5: Take your chosen plaintext and a key of 2 to 
+                    produce the ciphertext.
+                </b>
+                <br><br>
+                Use the below encryption tool to check your answers to ensure 
+                you are getting them right. Got them all correct? Great job! Try 
+                out some other keys and plaintext until you really get how to do
+                this type of encryption. Move on to the next section to test 
+                decryption.
+            </p>
             <input type="button" onclick="railLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="railLoadNextSection()" value="Next"/>
+            <br><br>
         </div>
         
+        <div id="railTool">
+            <form name="railEncryptInput" method="post" action="">
+                Plaintext for rail fence cipher encryption: (no spaces)
+                <br> <input type="text" id="railPlainText"/>
+                <br>
+                Number of Rails (Key between 2 & 8): 
+                <br>
+                <input type="text" id="railKey"/>
+                <input type="button" onclick="setRailValue();" value="Encrypt"/>
+            </form>
+            <p id="railResultDisplay">Result: </p>
+            <br>
+        </div>
+
         <div id="rSectionFour">
-            <p>This is a test of the 4th section</p>
+            <p>
+                In this section we are going to put what you have learnt so far
+                to the test. You will need to perform decryption tasks to help you
+                become more competent with this form of decryption.
+                <br><br>
+                For this section you will be given multiple ciphertexts and key
+                values that you will use to produce the plaintext and crack the
+                code! Remember, to decrypt you need to divide the length of the 
+                ciphertext by the key and write out the ciphertext backwards. To
+                figure out which rail to start at, take the remainder and that is
+                the starting rail (i.e remainer = 2, start writing backwards from
+                rail 2.
+                <br><br>
+                <b>
+                    Task 1: Decrypt &quot;holelwrdlo&quot; with a key of 3.
+                    <br><br>
+                    Task 2: Decrypt &quot;osanltmnelersapomf&quot; with a key of 5.
+                    <br><br>
+                    Task 3: Decrypt &quot;onfknatponieilarangemd&quot; with a 
+                    key of 4.
+                    <br><br>
+                    Task 4: Decrypt &quot;svpcwiemuneanrotenusceisaiyrcets&quot;
+                    with a key of 6.
+                    <br><br>
+                    Task 5: Decrypt &quot;tiderrjcfrrporpyhryapoetocytgah&quot;
+                    with a key of 2.
+                </b>
+                <br><br>
+                Great job! Move on to the next section.
+            </p>
             <input type="button" onclick="railLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="railLoadNextSection()" value="Next"/>
         </div>
-        
+
         <div id="rSectionFive">
             <p>
                 Well done! You have completed the lesson for this topic! You can
@@ -72,5 +244,5 @@
 
     </body>
 
-    
+
 </html>

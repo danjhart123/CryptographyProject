@@ -4,8 +4,8 @@
     $password = "password";
     $dbname = "quiz";
     
-    $name = $_POST['name'];
-    $score = $_POST['score'];
+    $name = strip_tags($_POST['name']);
+    $score = strip_tags($_POST['score']);
 
     $connection = new mysqli($servername, $username, $password,$dbname);
     
@@ -21,6 +21,3 @@
         echo "Error";
     }
     $connection->close();
-?>
-
-

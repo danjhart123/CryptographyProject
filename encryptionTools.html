@@ -2,13 +2,13 @@
 
 <script type="text/javascript" src="myScripts.js"></script> 
 
-    
+
 <html>
     <head>
         <title>Encryption Tools</title>
         <link rel="stylesheet" href ="mystyle.css">
     </head>
-    
+
     <header>
         <div class="topnav">
             <a class="active" href="index.html">Home</a>
@@ -20,6 +20,7 @@
             <a href="tasks.html">Tasks and Games</a>
             <a href="encryptionTools.html">Encryption Tools</a>
             <a href="quiz.php">Quiz</a>
+            <a href="leaderboard.php">Leaderboard</a>
         </div>
     </header>
     <body>
@@ -37,7 +38,7 @@
             <p id="resultDisplay">Result: </p>
             <br>
         </div>
-        
+
         <div id ="decryptUserInput">
             <form name="dencryptInput" method="post" action="FirstServlet">
                 Ciphertext for Caesar cipher decryption: <br><input type="text" id="cipherText"/>
@@ -61,7 +62,7 @@
             <p id="vResultDisplay">Result: </p>
             <br>
         </div>
-        
+
         <div id ="vCipherDecryptUserInput">
             <form name="vDecryptInput" method="post" action="vCipherServlet">
                 CipherText for Vigen&egrave;re cipher decryption: <br><input type="text" id="vCipherText"/>
@@ -88,8 +89,8 @@
             <p id="railResultDisplay">Result: </p>
             <br>
         </div>
-        
-        
+
+
         <h3>Columnar Transposition Cipher Tools</h3>
         <br><br>
         <div id ="columnarInput">
@@ -105,8 +106,8 @@
             <p id="columnarResultDisplay">Result: </p>
             <br>
         </div>
-        
+
     </body>
 
-    
+
 </html>

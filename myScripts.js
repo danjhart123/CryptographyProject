@@ -165,10 +165,8 @@ function railLoadNextSection() {
     var sectionThree = document.getElementById("rSectionThree");
     var sectionFour = document.getElementById("rSectionFour");
     var sectionFive = document.getElementById("rSectionFive");
-    var tool = document.getElementById("railLessonTool");
-    var tool2 = document.getElementById("railLessonTool2");
-
-
+    var tool = document.getElementById("railTool");
+    
     if (rCounter === 1) {
         startMessage.style.display = "none";
         sectionOne.style.display = "block";
@@ -180,18 +178,16 @@ function railLoadNextSection() {
     if (rCounter === 3) {
         sectionTwo.style.display = "none";
         sectionThree.style.display = "block";
-        //tool.style.display = "block";
+        tool.style.display = "block";
     }
     if (rCounter === 4) {
         sectionThree.style.display = "none";
-        //tool.style.display = "none";
+        tool.style.display = "none";
         sectionFour.style.display = "block";
-        //tool2.style.display = "block";
     }
     if (rCounter === 5) {
         sectionFour.style.display = "none";
         sectionFive.style.display = "block";
-        //tool2.style.display = "none";
     }
 }
 
@@ -202,8 +198,7 @@ function railLoadPreviousSection() {
     var sectionTwo = document.getElementById("rSectionTwo");
     var sectionThree = document.getElementById("rSectionThree");
     var sectionFour = document.getElementById("rSectionFour");
-    var tool = document.getElementById("railLessonTool");
-    var tool2 = document.getElementById("railLessonTool2");
+    var tool = document.getElementById("railTool");
 
     if (rCounter === 0) {
         sectionOne.style.display = "none";
@@ -215,14 +210,13 @@ function railLoadPreviousSection() {
     }
     if (rCounter === 2) {
         sectionThree.style.display = "none";
-        //tool.style.display = "none";
+        tool.style.display = "none";
         sectionTwo.style.display = "block";
     }
     if (rCounter === 3) {
         sectionFour.style.display = "none";
-        //tool2.style.display = "none";
         sectionThree.style.display = "block";
-        //tool.style.display = "block";
+        tool.style.display = "block";
     }
 }
 

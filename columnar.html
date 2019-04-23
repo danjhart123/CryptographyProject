@@ -15,12 +15,96 @@
             <a href="tasks.html">Tasks and Games</a>
             <a href="encryptionTools.html">Encryption Tools</a>
             <a href="quiz.php">Quiz</a>
+            <a href="leaderboard.php">Leaderboard</a>
         </div>
     </header>
     <body>
         <h1> Columnar Transposition Cipher </h1>
 
-    </body>
+        <p>
+            The columnar transposition cipher is a transposition encryption cipher
+            which means that the ciphertext contains the same letters that are 
+            in the plaintext but the order of them has been changed. Basically, 
+            the letters in the original string get jumbled up and reordered in a
+            certain way. Like all encryption ciphers we have seen so far this 
+            method needs a key to encrypt messages. 
+            <br><br>
+            Unlike the other encryption ciphers we have seen so far, the key in 
+            this cipher can be an integer value or a string keyword which we use 
+            to determine how many columns we will need and the order of the columns
+            to be used in the process.
+            <br><br>
+            Once we have the key then we can perform the encryption of the plaintext.
+            Let us look at the below example where we will take the plaintext of
+            &quot;hello world&quot; and a key size of 4, meaning we have 4 columns
+            for this round of encryption.
+            <br><br>
+        </p>
+        <div class="img-container">
+            <img src="C:\Users\Daniel\Pictures\columnar_transposition.jpg" alt="Vigenere cipher table">
+        </div>
+        <br><br>
+        <p>
+            So, as you can see from the above picture, to encrypt the plaintext 
+            with 4 columns we take each letter of the plaintext and write it in
+            a column of a table which is 4 columns wide. Once we reach the last 
+            column, we move to the next row down and repeat this process until 
+            all the letters in the plaintext have been written out.
+            <br><br>
+            Once we have our filled out table, we then concentrate on what order
+            the columns should be written out in to create the ciphertext. If the 
+            key is a number, then we simply write out each column in ascending order.
+            <br><br>
+            In this example, we have 4 columns, so the ciphertext would consist of
+            the letters in column 1, followed by the letters in column 2,
+            followed by the letters in column 3, and finally followed by the 
+            letters in column 4. 
+            <br><br>
+            If we did this then we get the following ciphertext:
+            <br><br>
+        </p>
+        <p id="columnarExample">
+            <b> holewdlolr</b>
+            <br><br>
+        </p>
 
-    
+        <p>
+            Now if the key is a word then it is a bit different. The amount of 
+            columns we would have would be equal to the number of letters in the
+            keyword. Again, we will use the same example as above but using the 
+            keyword of &quot;back&quot;. Now, instead of just writing out the 
+            columns in ascending order, we write the keyword above our table, 
+            with each letter in the key corresponding to a column.
+            <br><br>
+            So in the about example, column 1 would have the letter &quot;b&quot;
+            above it, column 2 would have the letter &quot;a&quot;, column 3 would
+            have the letter &quot;c&quot;, and finally column 4 would have the 
+            letter &quot;k&quot;.
+            <br><br>
+            Now, when constructing the ciphertext, we write out the columns in 
+            alphabetical order of the key. So in our example, we would do column
+            2 (a), followed by column 1 (b), followed by column 3 (c), and finally 
+            column 4 (k). 
+            <br><br>
+            This gives us the ciphertext:
+        </p>
+        <br><br>
+        <p id="columnarExample">
+            <b>ewdhollolr</b>
+            <br><br>
+        </p>
+        <p>
+            As you can see, this is different to the ciphertext we get if we just
+            had the number 4 as a key instead of a string. This demonstrates how
+            different the output could be depending on the key used in the 
+            encryption process.
+            <br><br>
+            To decrypt a message that has been encrypted this way you would need
+            to know the key used. Once this is known you can recreate the grid 
+            used by writing the ciphertext out backwards in the columns. As you 
+            can see substitution ciphers seem to be harder to crack than transposition
+            ciphers since transposition ciphers are simply just a reordering of 
+            the original message. 
+        </p>
+    </body>
 </html>
