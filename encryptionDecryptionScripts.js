@@ -1,319 +1,45 @@
-var img = null;
-var img2 = null;
-var context = null;
-var canvas = null;
-var cCounter = 0;
-var vCounter = 0;
-var rCounter = 0;
-var ctCounter = 0;
+var columnOne;
+var columnTwo;
+var columnThree;
+var columnFour;
+var columnFive;
+var columnSix;
+var columnSeven;
+var columnEight;
+var railOne;
+var railTwo;
+var railThree;
+var railFour;
+var railFive;
+var railSix;
+var railSeven;
+var railEight;
 
-function rotate() {
-    img = document.getElementById("dial");
-
-    var key = document.getElementById("shift").value;
-    if (isNaN(key)) {
-        alert("Incorrect input - number needed");
-    } else {
-        var angle = Math.floor((360 / 26) * key);
-        img.style.transform = "rotate(" + angle + "deg)";
-    }
-}
-
-function caesarLoadNextSection() {
-    cCounter++;
-    var startMessage = document.getElementById("cStartMessage");
-    var sectionOne = document.getElementById("cSectionOne");
-    var sectionTwo = document.getElementById("cSectionTwo");
-    var sectionThree = document.getElementById("cSectionThree");
-    var sectionFour = document.getElementById("cSectionFour");
-    var sectionFive = document.getElementById("cSectionFive");
-    var tool = document.getElementById("caesarLessonTool");
-    var tool2 = document.getElementById("caesarLessonTool2");
-    
-    if (cCounter === 1) {
-        startMessage.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (cCounter === 2) {
-        sectionOne.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (cCounter === 3) {
-        sectionTwo.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-    if (cCounter === 4) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionFour.style.display = "block";
-        tool2.style.display = "block";
-    }
-    if (cCounter === 5) {
-        sectionFour.style.display = "none";
-        tool2.style.display = "none";
-        sectionFive.style.display = "block";
-    }
-
-}
-
-function caesarLoadPreviousSection() {
-    cCounter--;
-    var startMessage = document.getElementById("cStartMessage");
-    var sectionOne = document.getElementById("cSectionOne");
-    var sectionTwo = document.getElementById("cSectionTwo");
-    var sectionThree = document.getElementById("cSectionThree");
-    var sectionFour = document.getElementById("cSectionFour");
-    var tool = document.getElementById("caesarLessonTool");
-    var tool2 = document.getElementById("caesarLessonTool2");
-
-    if (cCounter === 0) {
-        sectionOne.style.display = "none";
-        startMessage.style.display = "block";
-    }
-    if (cCounter === 1) {
-        sectionTwo.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (cCounter === 2) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (cCounter === 3) {
-        sectionFour.style.display = "none";
-        tool2.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-}
-
-function vigenereLoadNextSection() {
-    vCounter++;
-    var startMessage = document.getElementById("vStartMessage");
-    var sectionOne = document.getElementById("vSectionOne");
-    var sectionTwo = document.getElementById("vSectionTwo");
-    var sectionThree = document.getElementById("vSectionThree");
-    var sectionFour = document.getElementById("vSectionFour");
-    var sectionFive = document.getElementById("vSectionFive");
-    var tool = document.getElementById("vigenereLessonTool");
-    var tool2 = document.getElementById("vigenereLessonTool2");
-
-
-    if (vCounter === 1) {
-        startMessage.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (vCounter === 2) {
-        sectionOne.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (vCounter === 3) {
-        sectionTwo.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-    if (vCounter === 4) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionFour.style.display = "block";
-        tool2.style.display = "block";
-    }
-    if (vCounter === 5) {
-        sectionFour.style.display = "none";
-        sectionFive.style.display = "block";
-        tool2.style.display = "none";
-    }
-}
-
-function vigenereLoadPreviousSection() {
-    vCounter--;
-    var startMessage = document.getElementById("vStartMessage");
-    var sectionOne = document.getElementById("vSectionOne");
-    var sectionTwo = document.getElementById("vSectionTwo");
-    var sectionThree = document.getElementById("vSectionThree");
-    var sectionFour = document.getElementById("vSectionFour");
-    var tool = document.getElementById("vigenereLessonTool");
-    var tool2 = document.getElementById("vigenereLessonTool2");
-
-    if (vCounter === 0) {
-        sectionOne.style.display = "none";
-        startMessage.style.display = "block";
-    }
-    if (vCounter === 1) {
-        sectionTwo.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (vCounter === 2) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (vCounter === 3) {
-        sectionFour.style.display = "none";
-        tool2.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-}
-
-function railLoadNextSection() {
-    rCounter++;
-    var startMessage = document.getElementById("rStartMessage");
-    var sectionOne = document.getElementById("rSectionOne");
-    var sectionTwo = document.getElementById("rSectionTwo");
-    var sectionThree = document.getElementById("rSectionThree");
-    var sectionFour = document.getElementById("rSectionFour");
-    var sectionFive = document.getElementById("rSectionFive");
-    var tool = document.getElementById("railTool");
-    
-    if (rCounter === 1) {
-        startMessage.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (rCounter === 2) {
-        sectionOne.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (rCounter === 3) {
-        sectionTwo.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-    if (rCounter === 4) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionFour.style.display = "block";
-    }
-    if (rCounter === 5) {
-        sectionFour.style.display = "none";
-        sectionFive.style.display = "block";
-    }
-}
-
-function railLoadPreviousSection() {
-    rCounter--;
-    var startMessage = document.getElementById("rStartMessage");
-    var sectionOne = document.getElementById("rSectionOne");
-    var sectionTwo = document.getElementById("rSectionTwo");
-    var sectionThree = document.getElementById("rSectionThree");
-    var sectionFour = document.getElementById("rSectionFour");
-    var tool = document.getElementById("railTool");
-
-    if (rCounter === 0) {
-        sectionOne.style.display = "none";
-        startMessage.style.display = "block";
-    }
-    if (rCounter === 1) {
-        sectionTwo.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (rCounter === 2) {
-        sectionThree.style.display = "none";
-        tool.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (rCounter === 3) {
-        sectionFour.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
-    }
-}
-
-function columnLoadNextSection() {
-    ctCounter++;
-    var startMessage = document.getElementById("ctStartMessage");
-    var sectionOne = document.getElementById("ctSectionOne");
-    var sectionTwo = document.getElementById("ctSectionTwo");
-    var sectionThree = document.getElementById("ctSectionThree");
-    var sectionFour = document.getElementById("ctSectionFour");
-    var sectionFive = document.getElementById("ctSectionFive");
-    var tool = document.getElementById("columnLessonTool");
-    var tool2 = document.getElementById("columnLessonTool2");
-
-    if (ctCounter === 1) {
-        startMessage.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (ctCounter === 2) {
-        sectionOne.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (ctCounter === 3) {
-        sectionTwo.style.display = "none";
-        sectionThree.style.display = "block";
-        //tool.style.display = "block";
-    }
-    if (ctCounter === 4) {
-        sectionThree.style.display = "none";
-        //tool.style.display = "none";
-        sectionFour.style.display = "block";
-        //tool2.style.display = "block";
-    }
-    if (ctCounter === 5) {
-        sectionFour.style.display = "none";
-        sectionFive.style.display = "block";
-        //tool2.style.display = "none";
-    }
-}
-
-function railLoadPreviousSection() {
-    ctCounter--;
-    var startMessage = document.getElementById("ctStartMessage");
-    var sectionOne = document.getElementById("ctSectionOne");
-    var sectionTwo = document.getElementById("ctSectionTwo");
-    var sectionThree = document.getElementById("ctSectionThree");
-    var sectionFour = document.getElementById("ctSectionFour");
-    var tool = document.getElementById("columnLessonTool");
-    var tool2 = document.getElementById("columnLessonTool2");
-
-    if (ctCounter === 0) {
-        sectionOne.style.display = "none";
-        startMessage.style.display = "block";
-    }
-    if (ctCounter === 1) {
-        sectionTwo.style.display = "none";
-        sectionOne.style.display = "block";
-    }
-    if (ctCounter === 2) {
-        sectionThree.style.display = "none";
-        //tool.style.display = "none";
-        sectionTwo.style.display = "block";
-    }
-    if (ctCounter === 3) {
-        sectionFour.style.display = "none";
-        //tool2.style.display = "none";
-        sectionThree.style.display = "block";
-        //tool.style.display = "block";
-    }
-}
-
-function onPageLoad() {
-    canvas = document.getElementById("testing");
-
-    if (canvas.getContext) {
-        context = canvas.getContext("2d");
-        img = document.getElementById("dial");
-        img2 = document.getElementById("wheel");
-        context.drawImage(img2, 0, 0);
-        context.drawImage(img, 0, 0);
-    } else {
-        alert("Canvas not supported by browser!");
-    }
-}
 
 function vEncrypt(vPlainText, vKeyArray) {
     var vResult = "";
-    for (var i = 0, j = 0; i < vPlainText.length; i++) {
+    var j = 0;
+    var htmlAlphabetStart = 65;
+    var htmlAlphabetEnd = 90;
+    var htmlUppercaseAlphabetStart = 97;
+    var spaceValue = 32;
+    var alphabetOffset = 26;
+
+    for (var i = 0; i < vPlainText.length; i++) {
+        if (j === vKeyArray.length) {
+            j = 0;
+        }
         var cipherChar = vPlainText.charCodeAt(i);
-        if (cipherChar === 32) {
+        if (cipherChar === spaceValue) {
             vResult += String.fromCharCode(cipherChar);
         } else {
-            if (cipherChar >= 65 && cipherChar <= 90) {
-                vResult += String.fromCharCode((cipherChar - 65 + vKeyArray[j % vKeyArray.length]) % 26 + 65);
+            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) {
+                vResult += String.fromCharCode((cipherChar - htmlAlphabetStart +
+                        vKeyArray[j]) % alphabetOffset + htmlAlphabetStart);
                 j++;
             } else {
-                vResult += String.fromCharCode((cipherChar - 97 + vKeyArray[j % vKeyArray.length]) % 26 + 97);
+                vResult += String.fromCharCode((cipherChar - htmlUppercaseAlphabetStart +
+                        vKeyArray[j]) % alphabetOffset + htmlUppercaseAlphabetStart);
                 j++;
             }
         }
@@ -323,16 +49,28 @@ function vEncrypt(vPlainText, vKeyArray) {
 
 function vDecrypt(vCipherText, dKeyArray) {
     var plainText = "";
-    for (var i = 0, j = 0; i < vCipherText.length; i++) {
+    var j = 0;
+    var htmlAlphabetStart = 65;
+    var htmlAlphabetEnd = 90;
+    var htmlLowercaseAlphabetStart = 97;
+    var spaceValue = 32;
+    var alphabetOffset = 26;
+
+    for (var i = 0; i < vCipherText.length; i++) {
+        if (j === dKeyArray.length) {
+            j = 0;
+        }
         var cipherChar = vCipherText.charCodeAt(i);
-        if (cipherChar === 32) {
+        if (cipherChar === spaceValue) {
             plainText += String.fromCharCode(cipherChar);
         } else {
-            if (cipherChar >= 65 && cipherChar <= 90) {
-                plainText += String.fromCharCode((cipherChar - 65 - dKeyArray[j % dKeyArray.length] + 26) % 26 + 65);
+            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) {
+                plainText += String.fromCharCode((cipherChar - htmlAlphabetStart
+                        - dKeyArray[j] + alphabetOffset) % alphabetOffset + htmlAlphabetStart);
                 j++;
             } else {
-                plainText += String.fromCharCode((cipherChar - 97 - dKeyArray[j % dKeyArray.length] + 26) % 26 + 97);
+                plainText += String.fromCharCode((cipherChar - htmlLowercaseAlphabetStart
+                        - dKeyArray[j] + alphabetOffset) % alphabetOffset + htmlLowercaseAlphabetStart);
                 j++;
             }
         }
@@ -362,9 +100,12 @@ function getDecryptKeyValues(vCipherText, vKey) {
 
 function getKeyValues(vPlainText, vKey) {
     var keyValueArray = [];
+    var htmlAlphabetStart = 65;
+    var keyOffset = 32;
+
     for (var i = 0; i < vKey.length; i++) {
         var keyCharValue = vKey.charCodeAt(i);
-        keyValueArray.push((keyCharValue - 65) % 32);
+        keyValueArray.push((keyCharValue - htmlAlphabetStart) % keyOffset);
     }
     vEncrypt(vPlainText, keyValueArray);
 }
@@ -393,15 +134,20 @@ function setValues() {
 
 function caesarCipher(plainText, key) {
     var result = '';
+    var htmlAlphabetStart = 65;
+    var htmlLowercaseAlphabetStart = 97;
+    var spaceValue = 32;
+    var alphabetOffset = 26;
+
     for (var i = 0; i < plainText.length; i++) {
-        var plainTextChar = plainText[i].charCodeAt(0);
-        if (plainTextChar === 32) {
+        var plainTextChar = plainText[i].charCodeAt();
+        if (plainTextChar === spaceValue) {
             result = result + String.fromCharCode(plainTextChar);
         } else {
-            var cipherTextChar = ((plainTextChar - 65 + key) % 26) + 97;
+            var cipherTextChar = ((plainTextChar - htmlAlphabetStart + key) %
+                    alphabetOffset) + htmlLowercaseAlphabetStart;
             result = result + String.fromCharCode(cipherTextChar);
         }
-
     }
     document.getElementById('resultDisplay').innerHTML = "Result: " + result;
     return result;
@@ -420,12 +166,18 @@ function setDecryptValues() {
 
 function caesarCipherDecrypt(plainText, key) {
     var result = '';
+    var htmlAlphabetStart = 65;
+    var htmlLowercaseAlphabetStart = 97;
+    var spaceValue = 32;
+    var alphabetOffset = 26;
+
     for (var i = 0; i < plainText.length; i++) {
-        var plainTextChar = plainText[i].charCodeAt(0);
-        if (plainTextChar === 32) {
+        var plainTextChar = plainText[i].charCodeAt();
+        if (plainTextChar === spaceValue) {
             result = result + String.fromCharCode(plainTextChar);
         } else {
-            var cipherTextChar = ((plainTextChar - 65 - key + 26) % 26) + 97;
+            var cipherTextChar = ((plainTextChar - htmlAlphabetStart - key +
+                    alphabetOffset) % 26) + htmlLowercaseAlphabetStart;
             result = result + String.fromCharCode(cipherTextChar);
         }
     }
@@ -459,10 +211,20 @@ function setRailValue() {
 
 }
 
+function clearRails(){
+    railOne = '';
+    railTwo = '';
+    railThree = '';
+    railFour = '';
+    railFive = '';
+    railSix = '';
+    railSeven = '';
+    railEight = '';
+}
+
 function railCipher2(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
+    
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
 
@@ -478,14 +240,13 @@ function railCipher2(plainText) {
 }
 
 function railCipher(plainText) {
-    var railOne = '';
-    var railTwo = '';
+    
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
         if (i % 2 === 0) {
             railOne += plainText.charAt(i);
             railTwo += plainText.charAt(i + 1);
-
         }
     }
     var result = railOne + railTwo;
@@ -493,10 +254,8 @@ function railCipher(plainText) {
 }
 
 function railCipher3(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
-    var railFour = '';
+    
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
         if (i % 6 === 0) {
@@ -513,11 +272,7 @@ function railCipher3(plainText) {
 }
 
 function railCipher4(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
-    var railFour = '';
-    var railFive = '';
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
         if (i % 8 === 0) {
@@ -536,12 +291,7 @@ function railCipher4(plainText) {
 }
 
 function railCipher5(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
-    var railFour = '';
-    var railFive = '';
-    var railSix = '';
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
         if (i % 10 === 0) {
@@ -562,13 +312,7 @@ function railCipher5(plainText) {
 }
 
 function railCipher6(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
-    var railFour = '';
-    var railFive = '';
-    var railSix = '';
-    var railSeven = '';
+    clearRails();
 
     for (var i = 0; i < plainText.length; i++) {
         if (i % 12 === 0) {
@@ -592,15 +336,9 @@ function railCipher6(plainText) {
 }
 
 function railCipher7(plainText) {
-    var railOne = '';
-    var railTwo = '';
-    var railThree = '';
-    var railFour = '';
-    var railFive = '';
-    var railSix = '';
-    var railSeven = '';
-    var railEight = '';
-
+    
+    clearRails();
+    
     for (var i = 0; i < plainText.length; i++) {
         if (i % 14 === 0) {
             railOne += plainText.charAt(i);
@@ -625,8 +363,10 @@ function railCipher7(plainText) {
 }
 
 function setColumnValue() {
+
     var plainText = document.getElementById("columnarPlainText").value;
     var key = parseInt(document.getElementById("columnarKey").value);
+
     if (isNaN(key)) {
         alert("Invalid input - number needed");
     } else if (key > 8 || key < 2) {
@@ -649,12 +389,21 @@ function setColumnValue() {
 
 }
 
+function clearColumns(){
+    columnOne = '';
+    columnTwo = '';
+    columnThree = '';
+    columnFour = '';
+    columnFive = '';
+    columnSix = '';
+    columnSeven = '';
+    columnEight = '';
+}
+
 function columnarCipher(plaintext) {
-
-    var columnOne = '';
-    var columnTwo = '';
-
-
+    
+    clearColumns();
+    
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 2 === 0) {
             columnOne += plaintext.charAt(i);
@@ -666,11 +415,8 @@ function columnarCipher(plaintext) {
 }
 
 function columnarCipher2(plaintext) {
-
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-
+    
+    clearColumns();
 
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 3 === 0) {
@@ -685,10 +431,7 @@ function columnarCipher2(plaintext) {
 
 function columnarCipher3(plaintext) {
 
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-    var columnFour = '';
+    clearColumns();
 
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 4 === 0) {
@@ -704,12 +447,8 @@ function columnarCipher3(plaintext) {
 
 function columnarCipher4(plaintext) {
 
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-    var columnFour = '';
-    var columnFive = '';
-
+    clearColumns();
+    
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 5 === 0) {
             columnOne += plaintext.charAt(i);
@@ -725,12 +464,7 @@ function columnarCipher4(plaintext) {
 
 function columnarCipher5(plaintext) {
 
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-    var columnFour = '';
-    var columnFive = '';
-    var columnSix = '';
+    clearColumns();
 
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 6 === 0) {
@@ -749,13 +483,7 @@ function columnarCipher5(plaintext) {
 
 function columnarCipher6(plaintext) {
 
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-    var columnFour = '';
-    var columnFive = '';
-    var columnSix = '';
-    var columnSeven = '';
+    clearColumns();
 
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 7 === 0) {
@@ -775,14 +503,7 @@ function columnarCipher6(plaintext) {
 
 function columnarCipher7(plaintext) {
 
-    var columnOne = '';
-    var columnTwo = '';
-    var columnThree = '';
-    var columnFour = '';
-    var columnFive = '';
-    var columnSix = '';
-    var columnSeven = '';
-    var columnEight = '';
+    clearColumns();
 
     for (var i = 0; i < plaintext.length; i++) {
         if (i % 8 === 0) {

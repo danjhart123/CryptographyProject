@@ -14,7 +14,6 @@
             <a href="columnar.html">Columnar Transposition Cipher</a>
             <a href="lessonIndex.html">Learning</a>
             <a href="tasks.html">Tasks and Games</a>
-            <a href="encryptionTools.html">Encryption Tools</a>
             <a href="quiz.php">Quiz</a>
             <a href="leaderboard.php">Leaderboard</a>
         </div>

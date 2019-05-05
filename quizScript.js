@@ -132,7 +132,7 @@ const quizQuestions = [
         correctAnswer: "a"
     },
     {
-        prompt: "Question 1: What type of cipher uses substitution and multiple alphabet?",
+        prompt: "Question 16: What type of cipher uses substitution and multiple alphabet?",
         answer1: "a: Vigen&egrave;re",
         answer2: "b: Caesar",
         answer3: "c: Rail-fence",
@@ -147,6 +147,10 @@ var questionNumber = 0;
 function checkQuestion() {
     var answer = document.getElementById("answer").value;
     var correct = quizQuestions[questionNumber].correctAnswer;
+    var quiz = document.getElementById("wholeQuiz");
+    var finishedMessage = document.getElementById("finishMessage");
+    
+    
     if(answer === ""){
         alert("Please enter an answer before submitting");
     }
@@ -167,6 +171,8 @@ function checkQuestion() {
     
     if(questionNumber === quizQuestions.length){
     setScore();
+    quiz.style.display = "none";
+    finishedMessage.style.display = "block";
     }
     loadQuestion();
 }
