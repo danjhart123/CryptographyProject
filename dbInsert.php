@@ -1,8 +1,12 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "password";
-    $dbname = "quiz";
+/**
+ * PHP code used to connect to a database and insert a new entry.
+ */
+
+    $servername = "localhost"; //name of server
+    $username = "root"; //username for database access
+    $password = "password"; //password for database access
+    $dbname = "quiz"; //name of database being accessed
     
     $name = strip_tags($_POST['name']);
     $score = strip_tags($_POST['score']);
@@ -14,6 +18,7 @@
     }
     
     $statement = "INSERT INTO `quizscores`(`Name`, `Score`) VALUES ('$name', '$score')";
+    //SQL statement for insertion
     
     if($connection->query($statement) === TRUE){
         echo "Score added to database!";

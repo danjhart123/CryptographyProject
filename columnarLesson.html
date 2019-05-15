@@ -21,7 +21,7 @@
     </header>
     <body>
         <h1> Columnar Transposition Cipher Lesson </h1>
-        
+
         <div id="ctStartMessage">
             <br><br>
             <p>Hello and welcome to our lesson for teaching the Columnar Transposition cipher.
@@ -35,7 +35,7 @@
             </p>
             <input type="button" onclick="columnLoadNextSection()" value="Start Lesson!"/>
         </div>
-        
+
         <div id="ctSectionOne">
             <p>
                 Let us begin your fourth and last lesson on the world of cryptography by
@@ -50,38 +50,144 @@
                 before, this one can have 2 types of keys. The key for this cipher
                 can either be a number or a word/string.
                 <br><br>
-                In this section we will
+                Move on to the next section to learn more.
             </p>
             <br><br>
             <input type="button" onclick="columnLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="columnLoadNextSection()" value="Next"/>
         </div>
-        
+
         <div id="ctSectionTwo">
             <p>
-                Section 2
+                Once we have the key then we can perform the encryption of the plaintext.
+                Let us look at the below example where we will take the plaintext of
+                &quot;hello world&quot; and a key size of 4, meaning we have 4 columns
+                for this round of encryption.
+                <br><br>
+            </p>
+            <div class="img-container">
+                <img src="C:\Users\Daniel\Pictures\columnar_transposition.jpg" alt="Vigenere cipher table">
+            </div>
+            <br><br>
+            <p>
+                So, as you can see from the above picture, to encrypt the plaintext 
+                with 4 columns we take each letter of the plaintext and write it in
+                a column of a table which is 4 columns wide. Once we reach the last 
+                column, we move to the next row down and repeat this process until 
+                all the letters in the plaintext have been written out.
+                <br><br>
+                Once we have our filled out table, we then concentrate on what order
+                the columns should be written out in to create the ciphertext. If the 
+                key is a number, then we simply write out each column in ascending order.
+                <br><br>
+                In this example, we have 4 columns, so the ciphertext would consist of
+                the letters in column 1, followed by the letters in column 2,
+                followed by the letters in column 3, and finally followed by the 
+                letters in column 4. 
+                <br><br>
+                If we did this then we get the following ciphertext:
+                <br><br>
+            </p>
+            <p id="columnarExample">
+                <b> holewdlolr</b>
+                <br><br>
+            </p>
+
+            <p>
+                Now if the key is a word then it is a bit different. The amount of 
+                columns we would have would be equal to the number of letters in the
+                keyword. Again, we will use the same example as above but using the 
+                keyword of &quot;back&quot;. Now, instead of just writing out the 
+                columns in ascending order, we write the keyword above our table, 
+                with each letter in the key corresponding to a column.
+                <br><br>
+                So in the about example, column 1 would have the letter &quot;b&quot;
+                above it, column 2 would have the letter &quot;a&quot;, column 3 would
+                have the letter &quot;c&quot;, and finally column 4 would have the 
+                letter &quot;k&quot;.
+                <br><br>
+                Now, when constructing the ciphertext, we write out the columns in 
+                alphabetical order of the key. So in our example, we would do column
+                2 (a), followed by column 1 (b), followed by column 3 (c), and finally 
+                column 4 (k). 
+                <br><br>
+                This gives us the ciphertext:
+            </p>
+            <br><br>
+            <p id="columnarExample">
+                <b>ewdhollolr</b>
+                <br><br>
+            </p>
+            <p>
+                As you can see, this is different to the ciphertext we get if we just
+                had the number 4 as a key instead of a string. This demonstrates how
+                different the output could be depending on the key used in the 
+                encryption process.
+                <br><br>
+                To decrypt a message that has been encrypted this way you would need
+                to know the key used. Once this is known you can recreate the grid 
+                used by writing the ciphertext out backwards in the columns. As you 
+                can see substitution ciphers seem to be harder to crack than transposition
+                ciphers since transposition ciphers are simply just a reordering of 
+                the original message. 
             </p>
             <input type="button" onclick="columnLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="columnLoadNextSection()" value="Next"/>
         </div>
-        
+
         <div id="ctSectionThree">
             <p>
-                Section 3
+                In this section we are going to put what you have learnt so far
+                to the test. You will need to perform encryption tasks to help you
+                become more competent with this form of encryption.
+                <br><br>
+                For this section you will need to pick out a word to encrypt 
+                (plaintext), this word can be anything you want but it is best
+                if it a long phrase/sentence. Got your plaintext? Great! Next we
+                need a key (number or string) but in this tutorial you will be 
+                given various number keys to use for encryption.
+                <br><br>
+                <b>
+                    Task 1: Take your chosen plaintext and a key of 4 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 2: Take your chosen plaintext and a key of 5 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 3: Take your chosen plaintext and a key of 3;
+                    to produce the ciphertext.
+                    <br><br>
+                    Task 4: Take your chosen plaintext and a key of 3 to 
+                    produce the ciphertext.
+                    <br><br>
+                    Task 5: Take your chosen plaintext and a key of 2 to 
+                    produce the ciphertext.
+                </b>
+                <br><br>
+                Use the below encryption tool to check your answers to ensure 
+                you are getting them right. Got them all correct? Great job! Try 
+                out some other keys and plaintext until you really get how to do
+                this type of encryption.
             </p>
             <input type="button" onclick="columnLoadPreviousSection()" value="Previous"/>
             <input type="button" onclick="columnLoadNextSection()" value="Next"/>
         </div>
         
+        <div id ="columnLessonTool">
+            <form name="columnarEncryptInput" method="post" action="">
+                Plaintext for columnar transposition cipher encryption: (no spaces)
+                <br> <input type="text" id="columnarPlainText"/>
+                <br>
+                Number of columns (Key between 2 & 8):  
+                <br>
+                <input type="text" id="columnarKey"/>
+                <input type="button" onclick="setColumnValue();" value="Encrypt"/>
+            </form>
+            <p id="columnarResultDisplay">Result: </p>
+            <br>
+        </div>
+
         <div id="ctSectionFour">
-            <p>
-                Section 4
-            </p>
-            <input type="button" onclick="columnLoadPreviousSection()" value="Previous"/>
-            <input type="button" onclick="columnLoadNextSection()" value="Next"/>
-        </div>
-        
-        <div id="ctSectionFive">
             <p>
                 Well done! You have completed the lesson for this topic! You can
                 either re-do the lesson if you still do not understand or you 
@@ -89,10 +195,10 @@
             </p>
             <a href="columnarLesson.html">Re-do Lesson</a>
             <a href="lessonsIndex.html">Lesson Index</a>
-            
+
         </div>
 
     </body>
 
-    
+
 </html>

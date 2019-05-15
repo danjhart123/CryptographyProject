@@ -1,4 +1,4 @@
-var columnOne;
+var columnOne; //variables to be used in the encryption process
 var columnTwo;
 var columnThree;
 var columnFour;
@@ -16,14 +16,20 @@ var railSeven;
 var railEight;
 
 
+/**
+ * Method to encrypt a string using the vigenere cipher.
+ * @param {string} vPlainText - string to be encrypted
+ * @param {int array} vKeyArray - array of encryption key values
+ * @returns null
+ */
 function vEncrypt(vPlainText, vKeyArray) {
-    var vResult = "";
-    var j = 0;
-    var htmlAlphabetStart = 65;
-    var htmlAlphabetEnd = 90;
-    var htmlUppercaseAlphabetStart = 97;
-    var spaceValue = 32;
-    var alphabetOffset = 26;
+    var vResult = ""; //result string
+    var j = 0; //counter
+    var htmlAlphabetStart = 65; ////character code of the start of the alphabet in HTML
+    var htmlAlphabetEnd = 90; //character code of the end of the alphabet in HTML
+    var htmlUppercaseAlphabetStart = 97; //character code of the start of the uppercase alphabet in HTML
+    var spaceValue = 32; //character code of the key space
+    var alphabetOffset = 26; //number of letters in the alphabet
 
     for (var i = 0; i < vPlainText.length; i++) {
         if (j === vKeyArray.length) {
@@ -33,7 +39,7 @@ function vEncrypt(vPlainText, vKeyArray) {
         if (cipherChar === spaceValue) {
             vResult += String.fromCharCode(cipherChar);
         } else {
-            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) {
+            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) { //checks for the case of the letter
                 vResult += String.fromCharCode((cipherChar - htmlAlphabetStart +
                         vKeyArray[j]) % alphabetOffset + htmlAlphabetStart);
                 j++;
@@ -47,14 +53,20 @@ function vEncrypt(vPlainText, vKeyArray) {
     document.getElementById("vResultDisplay").innerHTML = "Result: " + vResult;
 }
 
+/**
+ * Method to decrypt a string using the vigenere cipher.
+ * @param {string} vCipherText - string to be decrypted
+ * @param {int array} dKeyArray - array of decryption key values
+ * @returns null
+ */
 function vDecrypt(vCipherText, dKeyArray) {
-    var plainText = "";
-    var j = 0;
-    var htmlAlphabetStart = 65;
-    var htmlAlphabetEnd = 90;
-    var htmlLowercaseAlphabetStart = 97;
-    var spaceValue = 32;
-    var alphabetOffset = 26;
+    var plainText = ""; //result string
+    var j = 0; //counter
+    var htmlAlphabetStart = 65; ////character code of the start of the alphabet in HTML
+    var htmlAlphabetEnd = 90; //character code of the end of the alphabet in HTML
+    var htmlLowercaseAlphabetStart = 97; //character code of the start of the lowercase alphabet in HTML
+    var spaceValue = 32; //character code of the key space
+    var alphabetOffset = 26; //number of letters in the alphabet, used to ensure value is always positive
 
     for (var i = 0; i < vCipherText.length; i++) {
         if (j === dKeyArray.length) {
@@ -64,7 +76,7 @@ function vDecrypt(vCipherText, dKeyArray) {
         if (cipherChar === spaceValue) {
             plainText += String.fromCharCode(cipherChar);
         } else {
-            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) {
+            if (cipherChar >= htmlAlphabetStart && cipherChar <= htmlAlphabetEnd) { //checks for case of letter
                 plainText += String.fromCharCode((cipherChar - htmlAlphabetStart
                         - dKeyArray[j] + alphabetOffset) % alphabetOffset + htmlAlphabetStart);
                 j++;
@@ -78,6 +90,10 @@ function vDecrypt(vCipherText, dKeyArray) {
     document.getElementById("vPlainTextDisplay").innerHTML = "Result: " + plainText;
 }
 
+/**
+ * Method to set the values for vigenere decryption.
+ * @returns null
+ */
 function setVigenereDecryptValues() {
     var vPlainText = document.getElementById("vCipherText").value;
     var vKey = document.getElementById("vDecryptKey").value;
@@ -89,15 +105,28 @@ function setVigenereDecryptValues() {
     }
 }
 
+/**
+ * Method to fill the int array that is used for vigenere decryption.
+ * @param {string} vCipherText - string to be decrypted
+ * @param {int array} vKey - the int array to be filled
+ * @returns {undefined}
+ */
 function getDecryptKeyValues(vCipherText, vKey) {
     var keyValueArray = [];
     for (var i = 0; i < vKey.length; i++) {
         var keyCharValue = vKey.charCodeAt(i);
-        keyValueArray.push((keyCharValue - 65) % 32);
+        keyValueArray.push((keyCharValue - 65) % 32); //% 32 done to ensure 
+        //numbers are stored in array correctly
     }
     vDecrypt(vCipherText, keyValueArray);
 }
 
+/**
+ * Method to fill the int array that is used for vigenere encryption.
+ * @param {string} vPlainText - string to be encrypted
+ * @param {int array} vKey - the int array to be filled
+ * @returns {undefined}
+ */
 function getKeyValues(vPlainText, vKey) {
     var keyValueArray = [];
     var htmlAlphabetStart = 65;
@@ -105,11 +134,16 @@ function getKeyValues(vPlainText, vKey) {
 
     for (var i = 0; i < vKey.length; i++) {
         var keyCharValue = vKey.charCodeAt(i);
-        keyValueArray.push((keyCharValue - htmlAlphabetStart) % keyOffset);
+        keyValueArray.push((keyCharValue - htmlAlphabetStart) % keyOffset); 
+        //% keyOffset done to ensure numbers are stored correctly
     }
     vEncrypt(vPlainText, keyValueArray);
 }
 
+/**
+ * Method to set the values for vigenere encryption.
+ * @returns null
+ */
 function setVigenereValues() {
     var vPlainText = document.getElementById("vPlainText").value;
     var vKey = document.getElementById("vKey").value;
@@ -120,8 +154,11 @@ function setVigenereValues() {
     }
 }
 
+/**
+ * Method to set the values for Caesar encryption.
+ * @returns null
+ */
 function setValues() {
-
     var plainText = document.getElementById("plainText").value;
     plainText = plainText.toUpperCase();
     var key = parseInt(document.getElementById("key").value);
@@ -132,6 +169,12 @@ function setValues() {
     }
 }
 
+/**
+ * Method used to encrypt a string using a Caesar cipher.
+ * @param {string} plainText - string to be encrypted
+ * @param {int} key - number of values to shift
+ * @returns {null}
+ */
 function caesarCipher(plainText, key) {
     var result = '';
     var htmlAlphabetStart = 65;
@@ -150,9 +193,12 @@ function caesarCipher(plainText, key) {
         }
     }
     document.getElementById('resultDisplay').innerHTML = "Result: " + result;
-    return result;
 }
 
+/**
+ * Method to set the values for Caesar encryption.
+ * @returns null
+ */
 function setDecryptValues() {
     var cipherText = document.getElementById("cipherText").value;
     cipherText = cipherText.toUpperCase();
@@ -164,6 +210,12 @@ function setDecryptValues() {
     }
 }
 
+/**
+ * Method used to encrypt a string using a Caesar cipher.
+ * @param {string} plainText - string to be encrypted
+ * @param {int} key - number of values to shift
+ * @returns {null}
+ */
 function caesarCipherDecrypt(plainText, key) {
     var result = '';
     var htmlAlphabetStart = 65;
@@ -182,13 +234,16 @@ function caesarCipherDecrypt(plainText, key) {
         }
     }
     document.getElementById('plainTextDisplay').innerHTML = "Result: " + result;
-    return result;
-}
+    }
 
+/**
+ * Method to set values for rail-fence cipher.
+ * @returns null
+ */
 function setRailValue() {
     var plainText = document.getElementById("railPlainText").value;
     var key = parseInt(document.getElementById("railKey").value);
-
+    //checks value of key and calls appropriate code
     if (isNaN(key)) {
         alert("Invalid input - number needed");
     } else if (key > 8 || key < 2) {
@@ -211,6 +266,10 @@ function setRailValue() {
 
 }
 
+/**
+ * Method to reset the values of the rails use in encryption.
+ * @returns null
+ */
 function clearRails(){
     railOne = '';
     railTwo = '';
@@ -222,6 +281,11 @@ function clearRails(){
     railEight = '';
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and three rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher2(plainText) {
     
     clearRails();
@@ -239,6 +303,11 @@ function railCipher2(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and two rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher(plainText) {
     
     clearRails();
@@ -253,6 +322,11 @@ function railCipher(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and four rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher3(plainText) {
     
     clearRails();
@@ -271,6 +345,11 @@ function railCipher3(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and five rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher4(plainText) {
     clearRails();
 
@@ -290,6 +369,11 @@ function railCipher4(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and six rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher5(plainText) {
     clearRails();
 
@@ -311,6 +395,11 @@ function railCipher5(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and seven rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher6(plainText) {
     clearRails();
 
@@ -335,6 +424,11 @@ function railCipher6(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the rail-fence cipher and eight rails.
+ * @param {string} plainText - string to be encrypted
+ * @returns null
+ */
 function railCipher7(plainText) {
     
     clearRails();
@@ -362,11 +456,15 @@ function railCipher7(plainText) {
     document.getElementById("railResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to set the values for encryption using the rail-fence cipher
+ * @returns null
+ */
 function setColumnValue() {
 
     var plainText = document.getElementById("columnarPlainText").value;
     var key = parseInt(document.getElementById("columnarKey").value);
-
+    //checks the key value and calls the corresponding code
     if (isNaN(key)) {
         alert("Invalid input - number needed");
     } else if (key > 8 || key < 2) {
@@ -389,6 +487,10 @@ function setColumnValue() {
 
 }
 
+/**
+ * Method to reset the columns used in encryption.
+ * @returns null
+ */
 function clearColumns(){
     columnOne = '';
     columnTwo = '';
@@ -400,6 +502,11 @@ function clearColumns(){
     columnEight = '';
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and two columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher(plaintext) {
     
     clearColumns();
@@ -414,6 +521,11 @@ function columnarCipher(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and three columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher2(plaintext) {
     
     clearColumns();
@@ -429,6 +541,11 @@ function columnarCipher2(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and four columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher3(plaintext) {
 
     clearColumns();
@@ -445,6 +562,11 @@ function columnarCipher3(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and five columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher4(plaintext) {
 
     clearColumns();
@@ -462,6 +584,11 @@ function columnarCipher4(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and six columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher5(plaintext) {
 
     clearColumns();
@@ -481,6 +608,11 @@ function columnarCipher5(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and seven columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher6(plaintext) {
 
     clearColumns();
@@ -501,6 +633,11 @@ function columnarCipher6(plaintext) {
     document.getElementById("columnarResultDisplay").innerHTML = "Result: " + result;
 }
 
+/**
+ * Method to encrypt a string using the columnar transposition cipher and eight columns.
+ * @param {string} plaintext - string to be encrypted
+ * @returns {null}
+ */
 function columnarCipher7(plaintext) {
 
     clearColumns();

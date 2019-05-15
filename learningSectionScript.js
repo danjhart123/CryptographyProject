@@ -11,6 +11,10 @@ var sectionFive;
 var tool;
 var tool2;
 
+/**
+ * Method to set the variables for use in the Caesar cipher lesson.
+ * @return null
+ */
 function setCaesarValues(){
     startMessage = document.getElementById("cStartMessage");
     sectionOne = document.getElementById("cSectionOne");
@@ -22,6 +26,10 @@ function setCaesarValues(){
     tool2 = document.getElementById("caesarLessonTool2");
 }
 
+/**
+ * Method used to navigate forward through the Caesar cipher lesson.
+ * @returns null
+ */
 function caesarLoadNextSection() {
     cCounter++;
     setCaesarValues();
@@ -50,9 +58,12 @@ function caesarLoadNextSection() {
         tool2.style.display = "none";
         sectionFive.style.display = "block";
     }
-
 }
 
+/**
+ * Method used to navigate backwards through the Caesar cipher lesson.
+ * @returns null
+ */
 function caesarLoadPreviousSection() {
     cCounter--;
     setCaesarValues();
@@ -78,7 +89,11 @@ function caesarLoadPreviousSection() {
     }
 }
 
-function setVigenereValues(){
+/**
+ * Method to set the variables for use in the vigenere cipher lesson.
+ * @return null
+ */
+function setVigenereLessonValues(){
     startMessage = document.getElementById("vStartMessage");
     sectionOne = document.getElementById("vSectionOne");
     sectionTwo = document.getElementById("vSectionTwo");
@@ -89,9 +104,13 @@ function setVigenereValues(){
     tool2 = document.getElementById("vigenereLessonTool2");
 }
 
+/**
+ * Method used to navigate forward through the vigenere cipher lesson.
+ * @returns null
+ */
 function vigenereLoadNextSection() {
     vCounter++;
-    setVigenereValues();
+    setVigenereLessonValues();
 
     if (vCounter === 1) {
         startMessage.style.display = "none";
@@ -119,9 +138,13 @@ function vigenereLoadNextSection() {
     }
 }
 
+/**
+ * Method used to navigate backwards through the vigenere cipher lesson.
+ * @returns null
+ */
 function vigenereLoadPreviousSection() {
     vCounter--;
-    setVigenereValues();
+    setVigenereLessonValues();
 
     if (vCounter === 0) {
         sectionOne.style.display = "none";
@@ -144,6 +167,10 @@ function vigenereLoadPreviousSection() {
     }
 }
 
+/**
+ * Method to set the variables for use in the rail-fence cipher lesson.
+ * @return null
+ */
 function setRailValues(){
     startMessage = document.getElementById("rStartMessage");
     sectionOne = document.getElementById("rSectionOne");
@@ -154,6 +181,10 @@ function setRailValues(){
     tool = document.getElementById("railTool");
 }
 
+/**
+ * Method used to navigate forward through the rail-fence cipher lesson.
+ * @returns null
+ */
 function railLoadNextSection() {
     rCounter++;
     setRailValues();
@@ -182,6 +213,10 @@ function railLoadNextSection() {
     }
 }
 
+/**
+ * Method used to navigate backwards through the rail-fence cipher lesson.
+ * @returns null
+ */
 function railLoadPreviousSection() {
     rCounter--;
     setRailValues();
@@ -206,6 +241,10 @@ function railLoadPreviousSection() {
     }
 }
 
+/**
+ * Method to set the variables for use in the columnar transposition cipher lesson.
+ * @return null
+ */
 function setColumnValues(){
     startMessage = document.getElementById("ctStartMessage");
     sectionOne = document.getElementById("ctSectionOne");
@@ -215,6 +254,11 @@ function setColumnValues(){
     sectionFive = document.getElementById("ctSectionFive");
     tool = document.getElementById("columnLessonTool");    
 }
+
+/**
+ * Method used to navigate forward through the columnar transposition cipher lesson.
+ * @returns null
+ */
 function columnLoadNextSection() {
     ctCounter++;
     setColumnValues();
@@ -238,12 +282,12 @@ function columnLoadNextSection() {
         sectionFour.style.display = "block";
         
     }
-    if (ctCounter === 5) {
-        sectionFour.style.display = "none";
-        sectionFive.style.display = "block";
-    }
 }
 
+/**
+ * Method used to navigate backwards through the columnar transposition cipher lesson.
+ * @returns null
+ */
 function columnLoadPreviousSection() {
     ctCounter--;
     setColumnValues();
@@ -260,11 +304,6 @@ function columnLoadPreviousSection() {
         sectionThree.style.display = "none";
         tool.style.display = "none";
         sectionTwo.style.display = "block";
-    }
-    if (ctCounter === 3) {
-        sectionFour.style.display = "none";
-        sectionThree.style.display = "block";
-        tool.style.display = "block";
     }
 }
 

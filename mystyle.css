@@ -1,38 +1,23 @@
+/* Hides all of the listed components */
 #quizInput, #leaderBoardEntry, #caesarLessonTool, #caesarLessonTool2, 
-#vigenereLessonTool, #vigenereLessonTool2, #railTool{
+#vigenereLessonTool, #vigenereLessonTool2, #railTool, #columnLessonTool{
     display: none;
 }
 
+/* Formats the contents of the application */
 body{
     font-family: 'Helvetica', 'Arial', sans-serif;
     color: white;
     background-image: url("http://1.bp.blogspot.com/-zHVTCyY0lxI/UYFrFCfbgzI/AAAAAAAAKJg/Kj857osQyIE/s1600/Grey-website-background.jpg")
 }
 
-#heading{
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    color: white;
-}
 
-#caesarText{
-
-    font-size: 20px;
-}
+/* Changes font size of all paragraph tagged text to 20px */
 p{
-    font-size: 20px;
-    
+    font-size: 20px;   
 }
 
-#vigenereText{
-
-    font-size: 20px;
-}
-
-#historyText{
-
-    font-size: 20px;
-}
-
+/* Centers and increases the font size of the listed components */
 #homeWelcomeMessage, #vExample, #rails, #caesarExample, #wholeQuiz, #cStartMessage,
 #vStartMessage, #rStartMessage, #ctStartMessage, #columnarExample 
 {
@@ -41,6 +26,7 @@ p{
     
 }
 
+/* Centers, increases the font size and hides the text in the listed components */
 #cSectionOne, #cSectionTwo, #cSectionThree, #cSectionFour, #cSectionFive,
 #vSectionOne, #vSectionTwo, #vSectionThree, #vSectionFour, #vSectionFive,
 #rSectionOne, #rSectionTwo, #rSectionThree, #rSectionFour, #rSectionFive,
@@ -52,39 +38,36 @@ p{
     
 }
 
+/* Formats all of the components listed */
 #userInput, #decryptUserInput, #vCipherUserInput, #railCipherUserInput, 
 #vCipherDecryptUserInput, #railCipherUserInput2, #railCipherUserInput3, #railCipherUserInput4,
 #railCipherUserInput5, #shiftInput, #wholeQuiz, #caesarLessonTool, #caesarLessonTool2,
 #columnarInput, #startButton, #vigenereLessonTool, #vigenereLessonTool2, #railTool,
-#leaderBoardEntry{
+#leaderBoardEntry, #columnLessonTool{
     position: relative;
     margin: 0 auto; 
     width: 250px;
 }
 
+/* Centers the tables */
 table.center {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-ul{
-    line-height:2;
 
-}
-
-#testit{
-    text-align: left-side;
-}
-
-
+/* Changes the colour of all hyperlinks to white */
 a {
     color: white;
 }
+
+/* Centres any heading text with h1 or h3 tags */
 h1, h3{
     text-align: center;
 }
 
+/* Styles the navigation bar */
 .topnav {
     background-color: #333;
     overflow: hidden;
@@ -113,6 +96,7 @@ h1, h3{
     color: white;
 }
 
+/* Positions the image container */
 .img-container { 
     position: relative; 
     margin-left: auto;
@@ -120,6 +104,7 @@ h1, h3{
     width: 50%;
 }
 
+/* Positions the top image in the container */
 .img-container .top {
     position: absolute;
     top: 0;
@@ -128,16 +113,7 @@ h1, h3{
     transform-origin: 50% 52%;
 }
 
-#testing, #viginereTable{
-
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    
-}
-
+/* Formats tables */
 table {
     color: #333; 
     font-family: Helvetica, Arial, sans-serif; /* Nicer font */
@@ -146,16 +122,19 @@ table {
     collapse; border-spacing: 0; 
 }
 
+/* Formats table contents */
 th, th {
     border: 1px solid #CCC;
     height: 35px;
 }
 
+/* Formats table contents */
 th{
     background: #F3F3F3; /* Light grey background */
     font-weight: bold;
 }
 
+/* Formats table contents */
 td {  
     background: #FAFAFA; /* Lighter grey background */
     text-align: center; /* Center our text */

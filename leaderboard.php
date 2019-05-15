@@ -28,6 +28,9 @@
                     <th>Score</th>
                 </tr>
                 <?php
+                /**
+                 * Code to connect to the database and display the contents in a table.
+                 */
                 $connection = mysqli_connect("localhost", "root", "password", "quiz");
                 if ($connection->connect_error) {
                     die("Connection to database failed: " . $connection->connect_error);
@@ -51,10 +54,6 @@
                 }
                 $connection->close();
                 ?>
-
             </table>
-        
     </body>
-
-
 </html>

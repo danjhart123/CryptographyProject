@@ -1,4 +1,4 @@
-const quizQuestions = [
+const quizQuestions = [ //array of quiz question objects
     {
         prompt: "Question 1: What type of cipher uses substitution and one alphabet?",
         answer1: "a: Vigen&egrave;re",
@@ -51,7 +51,7 @@ const quizQuestions = [
         correctAnswer: "c"
     },
     {
-    prompt: "Question 7: What is the correct encryption of the word 'helloworld'\n\
+        prompt: "Question 7: What is the correct encryption of the word 'helloworld'\n\
                 when encrpyted using the rail-fence cipher with 6 rails?",
         answer1: "a: holelwrdlo",
         answer2: "b: hedlllroow",
@@ -60,7 +60,7 @@ const quizQuestions = [
         correctAnswer: "b"
     },
     {
-    prompt: "Question 8: What is the correct encryption of the word 'railfencecipher'\n\
+        prompt: "Question 8: What is the correct encryption of the word 'railfencecipher'\n\
                 when encrpyted using the rail-fence cipher with 8 rails?",
         answer1: "a: rraeihlpfiecnec",
         answer2: "b: rifneihraleccpe",
@@ -69,7 +69,7 @@ const quizQuestions = [
         correctAnswer: "a"
     },
     {
-    prompt: "Question 9: What is the correct encryption of the word 'computerscientist'\n\
+        prompt: "Question 9: What is the correct encryption of the word 'computerscientist'\n\
                 when encrpyted using the columnar transpostion cipher with 6 columns?",
         answer1: "a: criossmctpiuetnet",
         answer2: "b: cstocmipeuntteirs",
@@ -78,7 +78,7 @@ const quizQuestions = [
         correctAnswer: "c"
     },
     {
-    prompt: "Question 10: What is the correct encryption of the word 'columnartranspositioncipher'\n\
+        prompt: "Question 10: What is the correct encryption of the word 'columnartranspositioncipher'\n\
                 when encrpyted using the columnar transpostion cipher with 3 columns?",
         answer1: "a: cuarssichomrapioielntnotnpr",
         answer2: "b: cmtsinhonrptcelaaoiirurnsop",
@@ -87,7 +87,7 @@ const quizQuestions = [
         correctAnswer: "a"
     },
     {
-    prompt: "Question 11: Which cipher uses a look-up table to aid in its encryption\n\
+        prompt: "Question 11: Which cipher uses a look-up table to aid in its encryption\n\
 /decryption?",
         answer1: "a: columnar transposition",
         answer2: "b: rail-fence",
@@ -96,7 +96,7 @@ const quizQuestions = [
         correctAnswer: "d"
     },
     {
-    prompt: "Question 12: Which cipher uses a wheel to aid in its encryption/decryption?",
+        prompt: "Question 12: Which cipher uses a wheel to aid in its encryption/decryption?",
         answer1: "a: columnar transposition",
         answer2: "b: rail-fence",
         answer3: "c: caesar",
@@ -104,7 +104,7 @@ const quizQuestions = [
         correctAnswer: "c"
     },
     {
-    prompt: "Question 13: What is the correct encryption of the word 'softwareengineering'\n\
+        prompt: "Question 13: What is the correct encryption of the word 'softwareengineering'\n\
                 when encrpyted using the Vigen&egrave;re cipher with a key of 'year'?",
         answer1: "a: qsfkuervcrgzlieigrg",
         answer2: "b: zsqekhvppbnmypsymyr",
@@ -113,7 +113,7 @@ const quizQuestions = [
         correctAnswer: "a"
     },
     {
-    prompt: "Question 14: What is the correct encryption of the word 'vigenerecipher'\n\
+        prompt: "Question 14: What is the correct encryption of the word 'vigenerecipher'\n\
                 when encrpyted using the Vigen&egrave;re cipher with a key of 'hello'?",
         answer1: "a: rwxpqafvnllvvc",
         answer2: "b: vjihnfthcjrkes",
@@ -144,20 +144,22 @@ const quizQuestions = [
 var score = 0;
 var questionNumber = 0;
 
+/**
+ * Method to check the answer that has been inputted by the user and increase
+ * score if correct.
+ * @returns null
+ */
 function checkQuestion() {
     var answer = document.getElementById("answer").value;
     var correct = quizQuestions[questionNumber].correctAnswer;
     var quiz = document.getElementById("wholeQuiz");
     var finishedMessage = document.getElementById("finishMessage");
-    
-    
-    if(answer === ""){
+
+    if (answer === "") {
         alert("Please enter an answer before submitting");
-    }
-    else if (answer.length > 1){
+    } else if (answer.length > 1) {
         alert("invalid answer - please choose a,b,c or d!");
-    }
-    else if (answer === correct) {
+    } else if (answer === correct) {
         alert("Correct Answer!");
         score++;
         questionNumber++;
@@ -165,21 +167,31 @@ function checkQuestion() {
         alert("Incorrect Answer!");
         questionNumber++;
     }
-
     var count = document.getElementById("scoreCount");
     count.innerHTML = score + "/" + quizQuestions.length;
-    
-    if(questionNumber === quizQuestions.length){
-    setScore();
-    quiz.style.display = "none";
-    finishedMessage.style.display = "block";
+
+    if (questionNumber === quizQuestions.length) {
+        setScore();
+        quiz.style.display = "none";
+        finishedMessage.style.display = "block";
+        //if last question, set the score and change the page
     }
     loadQuestion();
 }
-function hideStartButton(){
+
+/**
+ * Method to hide the quiz start button once it has started.
+ * @returns null
+ */
+function hideStartButton() {
     var button = document.getElementById("startButton");
     button.style.display = "none";
 }
+
+/**
+ * Method to load the question from the array of questions.
+ * @returns null
+ */
 function loadQuestion() {
     hideStartButton();
     loadAnswerBox();
@@ -199,31 +211,43 @@ function loadQuestion() {
 
 }
 
+/**
+ * Method to load the answer input box for the user.
+ * @returns null
+ */
 function loadAnswerBox() {
     var input = document.getElementById("quizInput");
     input.style.display = "block";
 }
 
+/**
+ * Method to set the score on the page.
+ * @returns null
+ */
 function setScore() {
     var scoreDiv = document.getElementById("leaderBoardEntry");
     var scoreDisplay = document.getElementById("score");
     scoreDisplay.innerHTML = score;
     scoreDisplay.value = score;
     scoreDiv.style.display = "block";
-    
+
 }
 
-function addScore(){
+/**
+ * Method to call the php code to add the users score to the database
+ * @returns null
+ */
+function addScore() {
     var name = document.getElementById("name").value;
     var score = parseInt(document.getElementById("score").value);
     var dataString = "name=" + name + "&score=" + score;
-    
+
     $.ajax({
         type: "POST",
-        url: "dbInsert.php",
+        url: "dbInsert.php", //name of the php file called.
         data: dataString,
         cache: false,
-        success: function(html){
+        success: function (html) {
             alert(html);
         }
     });
